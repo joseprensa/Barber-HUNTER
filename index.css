@@ -1,5 +1,106 @@
-li {
-    display: flex;
-    display: inline-block;
+* {
+    margin: 0;
+  }
+  
+  html,
+  body {
+    height: 100%;
+  }
+  
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #999;
+  }
+  
+  p {
+    margin: 0.5em 0 0.5em 0;
+  }
+
+header {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #c09a93;
+    padding: 10px;
+  }
+  
+  nav a:visited,
+  nav a:link {
+    color: #fff;
     text-decoration: none;
+  }
+  
+  nav > ul {
+    display: inline;
+    padding: 0;
+  }
+  
+  nav > ul > li {
+    display: inline-block;
+    list-style: none;
+    margin: 0 5px 0 5px;
+  }
+/* just for the  css main */
+
+  main {  
+    display: block;
+    background-image: url("images/background.png");
+    padding-top: 3em;
+    padding-bottom: 3em;
+    min-height: 85%;
+  }
+
+  .container {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}   
+
+.item {
+    width: 10em;
+    padding: 10px 200px 10px 200px;
+    justify-content: center;
+    display: flex;
+    border-radius: 15px;
+    background-color: brown;
 }
+
+  /*just for the footer css */
+
+  footer {
+    padding: 15px;
+  }
+  
+  aside,
+  article {
+    padding: 2em;
+  }
+  
+  aside {
+    text-align: center;
+  }
+  
+  article {
+    width: 75%;
+  }
+  
+  .columns {
+    display: flex;
+  }
+
+  @media only screen and (min-width: 768px) {
+    main {
+      display: flex;
+    }
+  
+    aside {
+      margin-left: 2%;
+    }
+  
+    .columns-desktop {
+      display: flex;
+    }
+  }
