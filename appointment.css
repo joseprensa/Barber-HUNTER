@@ -1,0 +1,10 @@
+.page2 {
+    display: flex;
+    justify-content: center;
+}
+
+.page2 > form > div {
+     background-color: rgba(43, 125, 172, 0.563);
+     margin: 8px;
+     
+}

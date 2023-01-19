@@ -42,7 +42,7 @@ header {
     list-style: none;
     margin: 0 5px 0 5px;
   }
-/* just for the  css main */
+/* just for the css main */
 
   main {  
     display: block;
@@ -60,7 +60,9 @@ header {
 }   
 
 .item {
+  transition: 0.2em;
     width: 10em;
+    margin-top: 25px;
     padding: 10px 200px 10px 200px;
     justify-content: center;
     display: flex;

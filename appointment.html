@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="appointment.css">
     <title>appoinment</title>
 </head>
 <body>
@@ -19,7 +20,36 @@
     </header>
      
     <main>
+        <div class="page2">
+            <form action="">
+                <h1>Book appointment</h1>
+                <div>
+                <label for="name"></label>
+                <input placeholder="name:" type="text" name="name" required />
+                </div>
 
+                <div>
+                    <label for="email"></label>
+                    <input placeholder="email" type="email" name="email" required />
+                </div>
+
+                <div>
+                    <label for="tel"></label>
+                    <input placeholder="phone" type="tel" name="phone" />
+                </div>
+
+                <div>
+                    <label for="meeting-time">Choose a time for your appointment:</label>
+                    <br>
+                    <input type="datetime-local" name="meeting-time" required />
+                </div>
+
+                <div>
+                    <label  for="submit"></label>
+                    <input  type="submit" name="submit" value="send request" />
+                </div>
+            </form>
+        </div>
     </main>
 
     <footer>
