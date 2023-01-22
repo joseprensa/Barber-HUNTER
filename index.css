@@ -60,7 +60,7 @@ header {
 }   
 
 .item {
-  transition: 0.2em;
+    font-size: large;
     width: 10em;
     margin-top: 25px;
     padding: 10px 200px 10px 200px;
