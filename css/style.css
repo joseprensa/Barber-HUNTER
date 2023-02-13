@@ -35,6 +35,12 @@ body {
     padding: 8px 0;
 }
 
+.main-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .header-content {
     color: #f1f1f1;
     width: 100%;
@@ -295,45 +301,56 @@ footer {
 
 .aboutme-photo {
     width: 100%;
-    max-width: 320px;
+    max-width: 200px;
 }
 
 
 /* Forms
 ========================================================================== */
 /* Style inputs with type="text", select elements and textareas */
-input[type=text], select, textarea {
-    width: 100%; /* Full width */
-    padding: 12px; /* Some padding */ 
-    border: 1px solid #ccc; /* Gray border */
-    border-radius: 4px; /* Rounded borders */
-    box-sizing: border-box; /* Make sure that padding and width stays in place */
-    margin-top: 6px; /* Add a top margin */
-    margin-bottom: 16px; /* Bottom margin */
-    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+
+  form {
+    width: 500px;
+    margin: 50px;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #999;
   }
-  
-  /* Style the submit button with a specific background color etc */
-  input[type=submit] {
-    background-color: #04AA6D;
+
+  form div {
+    margin-bottom: 20px;
+  }
+
+  form label {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  form input[type="text"],
+  form input[type="email"],
+  form select {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+  form button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    background-color: blue;
     color: white;
-    padding: 12px 20px;
+    border-radius: 5px;
     border: none;
-    border-radius: 4px;
     cursor: pointer;
   }
-  
-  /* When moving the mouse over the submit button, add a darker green color */
-  input[type=submit]:hover {
-    background-color: #45a049;
-  }
-  
-  /* Add a background color and some padding around the form */
-  .container {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-  }
+
 
 /* Tables
 ========================================================================== */

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Code Louisville Student Portfolio</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Cabin|Roboto:400,700|Roboto+Condensed:400,700" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
+  </head>
+
+  <body>
+
+    <section class="header-container">
+
+        <header class="header-content">
+
+            <div class="main-logo">
+
+                <img src="/img/simbolo blanco.png" alt="logo" style=" width: 100px;">
+                <span>CL Student Portfolio</span>
+        
+            </div>
+        
+            <nav class="main-nav">
+        
+                <ul id="navigation">
+                    <li><a href="index.html">About Me</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#">contact</a></li>
+                </ul>
+        
+            </nav>
+
+            <nav class="mobile-nav">
+        
+                <span><a href="/index.html">☰</a></span>
+        
+            </nav>
+
+
+        </header>
+
+    </section>
+
+
+
+  
+    <section class="appointment" id="book">
+
+        <main>
+
+             <div class="appointment-content">
+
+                <form id="appointment-form">
+                    <form id="appointment-form">
+                        <form id="appointment-form">
+                            <div>
+                              <label for="name">Nombre:</label>
+                              <input type="text" id="name" name="name">
+                            </div>
+                            <div>
+                              <label for="email">Email:</label>
+                              <input type="email" id="email" name="email">
+                            </div>
+                            <div>
+                              <label for="date">Fecha:</label>
+                              <input type="date" id="date" name="date">
+                            </div>
+                            <div>
+                              <label for="time">Hora:</label>
+                              <select id="time" name="time">
+                                <!-- Options for available time slots will be added here -->
+                              </select>
+                            </div>
+                            <button type="submit">Programar cita</button>
+                          </form>
+                          
+                          <script>
+                            const form = document.getElementById('appointment-form');
+                            const timeSelect = form.elements.time;
+                          
+                            // Populate the time select with available time slots
+                            function populateTimeSelect(date) {
+                              timeSelect.innerHTML = '';
+                          
+                              // Horario de trabajo (en este ejemplo, de 9 a.m. a 5 p.m.)
+                              const startTime = new Date(date + 'T09:00:00');
+                              const endTime = new Date(date + 'T17:00:00');
+                          
+                              // Intervalo de tiempo (en este ejemplo, cada media hora)
+                              const interval = 30 * 60 * 1000;
+                          
+                              let currentTime = startTime;
+                              while (currentTime <= endTime) {
+                                const option = document.createElement('option');
+                                option.value = currentTime.toTimeString().substr(0, 5);
+                                option.text = option.value;
+                                timeSelect.appendChild(option);
+                                currentTime = new Date(currentTime.getTime() + interval);
+                              }
+                            }
+                          
+                            form.addEventListener('submit', function(event) {
+                              event.preventDefault();
+                              const name = form.elements.name.value;
+                              const email = form.elements.email.value;
+                              const date = form.elements.date.value;
+                              const time = form.elements.time.value;
+                          
+                              alert(`Cita programada para ${name} con correo electrónico ${email} en la fecha ${date} a las ${time}`);
+                            });
+                          
+                            // Update the time select whenever the date changes
+                            form.elements.date.addEventListener('change', function(event) {
+                              populateTimeSelect(event.target.value);
+                            });
+                          
+                            // Populate the time select with available time slots for today's date
+                            populateTimeSelect(form.elements.date.value);
+                          </script>
+                          
+                      
+ 
+            </div>
+
+        </main>
+
+    </section>
+
+
+    <section class="footer-container">
+
+        <footer class="footer-content">
+
+            <p>&copy; 2022 Code Louisville. This website maintained by: [jose prensa]</p> 
+
+        </footer>
+
+    </section>
+
+
+
+    <script src="js/app.js"></script>
+
+</body>
+</html>
