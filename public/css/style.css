@@ -545,7 +545,7 @@ header.header-content.topheader {
         left: 0;
         width: 100%;
         padding: 10px 0;
-        background-color: #f7f7f7;
+        background-color: #02020243;
         text-align: center;
      }
      
@@ -607,10 +607,8 @@ header.header-content.topheader {
     top: 0;
     width: 100%;
     align-items: center;
-    background-color: var(--menu-mobile-background-color);
-    height: 100%;
     overflow-y: auto;
-
+   
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s;
@@ -640,6 +638,7 @@ header.header-content.topheader {
   }
 
   .menu_opened {
+    display: flex;
     opacity: 1;
     pointer-events: all;
   }

@@ -3,8 +3,7 @@ const openMenuBtn = document.querySelector("#ham");
 const closeMenuBtn = document.querySelector(".close-menu");
 
 function toggleMenu() {
- // menu.classList.toggle("menu_opened");
- console.log("hello");
+menu.classList.toggle("menu_opened");
 }
 console.log(openMenuBtn);
 openMenuBtn.addEventListener("click", toggleMenu);
