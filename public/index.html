@@ -8,12 +8,14 @@
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Next</title>
+    <title>barber hunter</title>
 
     <link href="https://fonts.googleapis.com/css?family=Cabin|Roboto:400,700|Roboto+Condensed:400,700" rel="stylesheet">
     
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="img/simbolo negro.png" type="image/x-icon">
+    <script src="./js/" type="module"></script> 
+    <script src="js/menu.js"></script>
 
   </head>
 
@@ -22,31 +24,33 @@
 
     <section class="header-container">
 
-        <header class="header-content">
+        <header class="header-content topheader">
 
-          <div class="main-logo">
+          <div class="main-logo logo">
 
-            <img src="/img/simbolo blanco.png" alt="logo" style=" width: 100px;">
-           <span> <a href="/index.html">Next</a> </span>
+            <img src="/img/simbolo blanco.png" alt="logo" height="50" width="50">
+           <span> <a href="/index.html">BARBER <BR> HUNTER</BR></a> </span>
     
           </div>
 
-            <nav class="main-nav">
-        
-                <ul id="navigation">
-                    <li><a href="#aboutme">About Me</a></li>
-                    <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="appointment.html">Appointment</a></li>
-                </ul>
+            <nav class="main-nav topnav">
+
+              <button class="open-menu" id="ham" aria-label="open-menu">
+                <img src="img/hamburger-icon.svg" alt="open-menu" />
+              </button>
+
+              <ul id="navigation" class="menu mobile-menu">
+
+                <button class="close-menu" aria-label="close-menu">
+                 <img src="img/close-icon.svg" alt="close menu" />
+                </button>
+
+                <li><a href="#aboutme" class="selected">About Me</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="appointment.html">Appointment</a></li>
+              </ul>
         
             </nav>
-
-            <nav class="mobile-nav">
-        
-                <span><a href="#navigation">☰</a></span>
-        
-            </nav>
-
 
         </header>
 
@@ -178,29 +182,6 @@
         </footer>
 
     </section>
-    <script type="module">
-      // Import the functions you need from the SDKs you need
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
-      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-analytics.js";
-      // TODO: Add SDKs for Firebase products that you want to use
-      // https://firebase.google.com/docs/web/setup#available-libraries
-    
-      // Your web app's Firebase configuration
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-      const firebaseConfig = {
-        apiKey: "AIzaSyBhr8iOH6lFZbyt4Vi_w3ShuFeSU0F1IY0",
-        authDomain: "barber-hunter-efd92.firebaseapp.com",
-        projectId: "barber-hunter-efd92",
-        storageBucket: "barber-hunter-efd92.appspot.com",
-        messagingSenderId: "62488294722",
-        appId: "1:62488294722:web:d651aa084185d0b51984db",
-        measurementId: "G-40B853GZ0P"
-      };
-    
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      const analytics = getAnalytics(app);
-    </script>
 
   </body>
 </html>
