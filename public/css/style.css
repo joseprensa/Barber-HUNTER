@@ -29,6 +29,7 @@ body {
 
 
 .header-container {
+    width: 100%;
     background: #1b1b27;
     display: flex;
     justify-content: center;
@@ -42,10 +43,10 @@ body {
     align-items: center;
 }
 
-.header-content {
+.header-content .topheader{
     color: #f1f1f1;
     width: 100%;
-    max-width: 1000px;
+    
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -64,14 +65,12 @@ body {
 }
 
 .hero-content {
-    width: 100%;
-    max-width: 968px;
     text-align: center;
     padding: 70px 45px 45px 45px;
     margin-top: 8px;
 }
 
-.hero-container, .header-content {
+ .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -116,6 +115,12 @@ body {
     justify-content: center;
     align-items: center;
     padding: 8px 0;
+}
+
+#h2-gallery {
+  margin-top: 0%;
+ text-align: center;
+ text-decoration-color: ffffff;
 }
 
 .footer-content {
@@ -268,6 +273,10 @@ section p {
 
 /* Lists and Navigation
 ========================================================================== */
+.main-nav .topnav {
+  justify-content: center;
+
+}
 
 .main-nav {
     display: none;
@@ -307,7 +316,7 @@ header.header-content.topheader {
   .topnav {
     display: flex;
     justify-content: space-between;
-    padding: 10px;
+    padding: 10px 120px 10px 10px;
     max-width: 768px;
     margin: 0 auto;
   }

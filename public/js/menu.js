@@ -9,8 +9,7 @@ console.log(openMenuBtn);
 openMenuBtn.addEventListener("click", toggleMenu);
 closeMenuBtn.addEventListener("click", toggleMenu);
 
-
-/*const menuLinks = document.querySelectorAll('.menu a[href^="#"]');
+const menuLinks = document.querySelectorAll('.menu a[href^="#"]');
 
 const observer = new IntersectionObserver(
   (entries) => {
@@ -38,4 +37,3 @@ menuLinks.forEach((menuLink) => {
     observer.observe(target);
   }
 });
-*/
