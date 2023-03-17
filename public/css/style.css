@@ -467,7 +467,7 @@ header.header-content.topheader {
 /* Forms
 ========================================================================== */
 /* Style inputs with type="text", select elements and textareas */
-  .appointment-content {
+  .appointment-content {margin-top: 45px;
     display: flex;
     justify-content: center;
     align-items: center;
