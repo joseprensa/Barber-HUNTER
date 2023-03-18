@@ -323,12 +323,10 @@ header.header-content.topheader {
   
   /* Logo */
   
-  .logo {
-    display: flex;
-    align-items: center;
-    font-size: 18px;
-    font-weight: 500;
-    color: var(--primary-color);
+  .header-container>.header-content>.main-logo>img {
+    height: 50px;
+    width: 50px;
+
   }
   
   .logo img {
