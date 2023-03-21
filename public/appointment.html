@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="img/simbolo negro.png" type="image/x-icon">
     <script src="js/menu.js" defer></script>
+    <script src="./js/" type="module"></script> 
+    
 
   </head>
 
@@ -70,6 +72,10 @@
                               <input type="email" id="email" name="email">
                             </div>
                             <div>
+                              <label for="tel">Phone:</label>
+                              <input type="tel" id="Phone" name="Phone">
+                            </div>
+                            <div>
                               <label for="date">Date:</label>
                               <input type="date" id="date" name="date">
                             </div>
@@ -79,8 +85,16 @@
                                 <!-- Options for available time slots will be added here -->
                               </select>
                             </div>
-                            <button type="submit">Submit</button>
                           </form>
+                          <button  onclick="guardar()">Submit</button>
+
+                          <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+<script src="js/configuracion.js"></script>
+<script src="js/guardar.js"></script>
+<script src="js/firebase.js"></script>
                           
                           <script src="js/funtion.js"></script>                
  
@@ -103,4 +117,5 @@
 
 
 </body>
+
 </html>

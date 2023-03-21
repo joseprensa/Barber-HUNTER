@@ -1,5 +1,23 @@
 {
   "dependencies": {
-    "firebase": "^9.17.2"
-  }
+    "firebase": "^9.18.0"
+  },
+  "name": "barber-hunter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joseprensa/Barber-HUNTER.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joseprensa/Barber-HUNTER/issues"
+  },
+  "homepage": "https://github.com/joseprensa/Barber-HUNTER#readme",
+  "description": ""
 }
