@@ -57,7 +57,7 @@ body {
 
 .hero-container {
     display: block;
-    background: url('/img/simbolo\ negro.png') center center no-repeat;
+    background: url('/public/img/simbolo-negro.png') center center no-repeat;
     background-size: cover;
     background-color: #999;
     padding: 0;
@@ -316,9 +316,9 @@ header.header-content.topheader {
   .topnav {
     display: flex;
     justify-content: space-between;
-    padding: 10px 120px 10px 10px;
+    padding: 10px 10px 10px 100px;
     max-width: 768px;
-    margin: 0 auto;
+    margin: 0 50px 0 0;
   }
   
   /* Logo */
@@ -526,7 +526,7 @@ header.header-content.topheader {
 =============================================================================
 */
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 806px) {
     .hero-container {
         height: fit-content;
     }
@@ -640,8 +640,9 @@ header.header-content.topheader {
   }
 
   .close-menu {
+    margin: 0 50px 0 0;
     align-self: flex-end;
-    padding: 20px 15px;
+    padding: 0 16px 0 0;
   }
 
   .menu_opened {
@@ -669,7 +670,14 @@ header.header-content.topheader {
 }
 
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 806.40px) {
+  
+  .topnav{
+    
+  }
+  .gallery {
+    flex-wrap: nowrap;
+  }
 
   
     .gallery-container {
@@ -717,7 +725,7 @@ header.header-content.topheader {
 
 }
 
-@media only screen and (min-width: 1080px) {
+@media only screen and (min-width: 1077px) {
 
 
 }
