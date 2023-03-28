@@ -270,6 +270,12 @@ section p {
     text-align: center;
 }
 
+.aboutme-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
 
 /* Lists and Navigation
 ========================================================================== */
@@ -672,9 +678,7 @@ header.header-content.topheader {
 
 @media only screen and (min-width: 806.40px) {
   
-  .topnav{
     
-  }
   .gallery {
     flex-wrap: nowrap;
   }
@@ -726,7 +730,11 @@ header.header-content.topheader {
 }
 
 @media only screen and (min-width: 1077px) {
+  .aboutme-content {
+    flex-direction: row;
+    gap: 3rem;
 
+  }
 
 }
 
