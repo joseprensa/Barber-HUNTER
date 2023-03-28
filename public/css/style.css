@@ -552,7 +552,7 @@ header.header-content.topheader {
         left: 0;
         width: 100%;
         padding: 10px 0;
-        background-color: #02020243;
+        background-color: #000000e0;
         text-align: center;
      }
      
@@ -562,7 +562,7 @@ header.header-content.topheader {
      }
      
      .mobile-menu li a {
-        color: #333;
+        color: #b4afaf;
         font-size: 18px;
         text-decoration: none;
      }
@@ -662,7 +662,7 @@ header.header-content.topheader {
 
   .menu a:hover,
   .menu a.selected {
-    color: var(--secondary-color);
+    color: #fff;
   }
 
 
