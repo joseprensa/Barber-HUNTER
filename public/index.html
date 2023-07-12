@@ -13,8 +13,8 @@
     <link href="https://fonts.googleapis.com/css?family=Cabin|Roboto:400,700|Roboto+Condensed:400,700" rel="stylesheet">
     
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="./img/simbolo-negro.png" type="image/x-icon">
-    <script src="./js/" type="module"></script> 
+    <link rel="icon" href="img/simbolo-negro.png" type="image/x-icon">
+    <script src="js/" type="module"></script> 
     <script src="js/menu.js" defer></script>
 
   </head>
@@ -28,7 +28,7 @@
 
           <div class="main-logo logo">
 
-            <img src="./img/simbolo-blanco.png" alt="logo" >
+            <img src="img/simbolo-blanco.png" alt="logo" >
            <span> <a href="index.html">BARBER <BR> HUNTER</BR></a> </span>
     
           </div>
@@ -182,11 +182,33 @@
 
         <footer class="footer-content">
 
-            <p>&copy; 2023 Next</p> 
+            <p>&copy; 2023 BARBER HUNTER</p> 
 
         </footer>
 
     </section>
-
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyARUxSIQr0l69z6Fshkn7UVBm9J_Zxj4nQ",
+        authDomain: "barber-hunter-623e9.firebaseapp.com",
+        projectId: "barber-hunter-623e9",
+        storageBucket: "barber-hunter-623e9.appspot.com",
+        messagingSenderId: "40429391612",
+        appId: "1:40429391612:web:efcfec9781ca068605d179",
+        measurementId: "G-VPRMN8CSPG"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
   </body>
 </html>
