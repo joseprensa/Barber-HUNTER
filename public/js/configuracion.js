@@ -1,15 +1,14 @@
-import firebase from "firebase/app";
-import "firebase/firestore";
-
-// TODO: Replace the following with your app's Firebase project configuration
-// See: https://support.google.com/firebase/answer/7015592
-const firebaseConfig = {
-    FIREBASE_CONFIGURATION
-};
-
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-
-
-// Initialize Cloud Firestore and get a reference to the service
-const db = firebase.firestore();
+// Configuración de Firebase
+var firebaseConfig = {
+    apiKey: "AIzaSyARUxSIQr0l69z6Fshkn7UVBm9J_Zxj4nQ",
+    authDomain: "barber-hunter-623e9.firebaseapp.com",
+    projectId: "barber-hunter-623e9",
+    storageBucket: "barber-hunter-623e9.appspot.com",
+    messagingSenderId: "40429391612",
+    appId: "1:40429391612:web:efcfec9781ca068605d179",
+    measurementId: "G-VPRMN8CSPG"
+  };
+  
+  // Inicializar la aplicación de Firebase
+  firebase.initializeApp(firebaseConfig);
+  

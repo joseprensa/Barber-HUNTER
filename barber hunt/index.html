@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>barber hunter</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Cabin|Roboto:400,700|Roboto+Condensed:400,700" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/simbolo-negro.png" type="image/x-icon">
+    <script src="js/" type="module"></script> 
+    <script src="js/menu.js" defer></script>
+
+  </head>
+
+
+  <body>
+
+    <section class="header-container">
+
+        <header class="header-content topheader">
+
+          <div class="main-logo logo">
+
+            <img src="img/simbolo-blanco.png" alt="logo" >
+           <span> <a href="index.html">BARBER <BR> HUNTER</BR></a> </span>
+    
+          </div>
+
+            <nav class="main-nav topnav">
+
+              <button class="open-menu" id="ham" aria-label="open-menu">
+                <img src="img/hamburger-icon.svg" alt="open-menu" />
+              </button>
+
+              <ul id="navigation" class="menu mobile-menu">
+
+                <button class="close-menu" aria-label="close-menu">
+                 <img src="img/close-icon.svg" alt="close menu" />
+                </button>
+
+                <li><a href="#aboutme" class="selected">About Me</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="appointment.html">Appointment</a></li>
+              </ul>
+        
+            </nav>
+
+        </header>
+
+    </section>
+
+  
+    <section class="hero-container" id="hero">
+
+        <div class="hero-content">
+
+            <h1>You're Going to book Me.</h1>
+
+            <p>Hello, my name is [jose prensa] I'm a barber at Dream Team Barbershop.</p>
+
+            <a href="appointment.html" class="btn">Reservation</a>
+
+        </div>
+
+    </section>
+
+
+    <section class="aboutme-container" id="aboutme">
+
+        <div class="aboutme-content">
+
+            <img src="img/001.jpg" alt="Profile Photo" class="aboutme-photo">
+          
+            <div class="aboutme-div">
+            <h2>About Me</h2>
+
+            <p>
+                I am a passionate barber with over 10 years of experience in the trade.
+                I love to transform the look of my clients and give them a haircut that makes them feel confident and fabulous. 
+                I strive to stay up to date with the latest trends in haircuts and styles, and I am always willing to listen to the needs and desires of my clients in order to provide them with the best possible service.
+                My barbershop is a cozy and relaxed place where you can sit back, relax and enjoy a quality haircut. 
+                I offer a wide range of services, from classic cuts to more modern and elaborate styles.
+                I make sure to work with precision and attention to detail to ensure that every client leaves my barbershop with a haircut they love.
+                If you are looking for a reliable and experienced barber, look no further.
+                Book your appointment with me today and let me show you why I am the perfect barber for you.
+            </p>
+          </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="gallery-section" id="gallery">
+      <h2 id="h2-gallery">Gallery</h2>
+
+
+      <main class="gallery-content">
+        
+        <div class="gallery">
+
+          <div class="gallery-container">
+            <img src="gallery/gallery1.jpg" alt="gallery 1">
+          </div>
+    
+          <div class="gallery-container">
+            <img src="gallery/gallery2.jpg" alt="gallery 2">
+          </div>
+    
+          <div class="gallery-container">
+            <img src="gallery/gallery3.jpg" alt="gallery 3">
+          </div>
+    
+          <div class="gallery-container">
+            <img src="gallery/gallery4.jpg" alt="gallery 4">
+          </div>
+    
+          <div class="gallery-container">
+            <img src="gallery/gallery5.jpg" alt="gallery 5">
+          </div>
+    
+          <div class="gallery-container">
+            <img src="gallery/gallery6.jpg" alt="gallery 6">
+          </div>
+    
+          <div class="gallery-container">
+            <img src="gallery/gallery7.jpg" alt="gallery 7">
+          </div>
+    
+          <div class="gallery-container">
+            <img src="gallery/gallery8.jpg" alt="gallery 8">
+          </div>
+
+          <div class="gallery-container">
+            <img src="gallery/gallery9.jpg" alt="gallery 9">
+          </div>
+    
+          <div class="gallery-container">
+            <img src="gallery/gallery10.jpg" alt="gallery 10">
+          </div>
+    
+          <div class="gallery-container">
+            <img src="gallery/gallery11.jpg" alt="gallery 11">
+          </div>
+    
+          <div class="gallery-container">
+            <img src="gallery/gallery12.jpg" alt="gallery 12">
+          </div>
+    
+          <div class="gallery-container">
+            <img src="gallery/gallery13.jpg" alt="gallery 13">
+          </div>
+    
+          <div class="gallery-container">
+            <img src="gallery/gallery14.jpg" alt="gallery 14">
+          </div>
+    
+          <div class="gallery-container">
+            <img src="gallery/gallery15.jpg" alt="gallery 15">
+          </div>
+    
+          <div class="gallery-container">
+            <img src="gallery/gallery16.jpg" alt="gallery 16">
+          </div>
+
+          <script src="js/gallery.js"></script>
+        </div>
+
+      </main>
+
+    </section>
+      
+
+    <section class="footer-container">
+
+        <footer class="footer-content">
+
+            <p>&copy; 2023 BARBER HUNTER</p> 
+
+        </footer>
+
+    </section>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyARUxSIQr0l69z6Fshkn7UVBm9J_Zxj4nQ",
+        authDomain: "barber-hunter-623e9.firebaseapp.com",
+        projectId: "barber-hunter-623e9",
+        storageBucket: "barber-hunter-623e9.appspot.com",
+        messagingSenderId: "40429391612",
+        appId: "1:40429391612:web:efcfec9781ca068605d179",
+        measurementId: "G-VPRMN8CSPG"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
+  </body>
+</html>
