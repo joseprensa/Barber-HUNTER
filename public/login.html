@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <!-- Add Bootstrap CSS for styling -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <!-- Add custom CSS for styling -->
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .login-form {
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 300px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-form">
+    <h2>Login</h2>
+    <form onsubmit="return checkLogin()">
+      <div class="mb-3">
+        <label for="username" class="form-label">Username:</label>
+        <input type="text" class="form-control" id="username" required>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password:</label>
+        <input type="password" class="form-control" id="password" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Login</button>
+      <div class="mt-2" id="error-message" style="display: none; color: red;">Invalid credentials. Please try again.</div>
+    </form>
+  </div>
+
+  <!-- Add your JavaScript code here -->
+  <script>
+    function checkLogin() {
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+
+      if (username === 'prensa29' && password === 'Prensa.29') {
+        // Set the session variable to indicate the user is logged in
+        sessionStorage.setItem('isLoggedIn', true);
+        // Redirect to admin page
+        window.location.href = 'admin.html';
+        return false;
+      } else {
+        // Show error message
+        var errorMessage = document.getElementById('error-message');
+        errorMessage.style.display = 'block';
+        return false;
+      }
+    }
+
+    
+  </script>
+</body>
+</html>
