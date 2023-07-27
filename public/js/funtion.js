@@ -29,7 +29,7 @@ form.addEventListener('submit', function(event) {
   const date = form.elements.date.value;
   const time = form.elements.time.value;
 
-  alert(`Cita programada para ${name} con correo electrónico ${email} en la fecha ${date} a las ${time}`);
+  /* alert(`Cita programada para ${name} con correo electrónico ${email} en la fecha ${date} a las ${time}`); */
 });
 
 // Update the time select whenever the date changes

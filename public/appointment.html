@@ -12,12 +12,10 @@
 
     <link href="https://fonts.googleapis.com/css?family=Cabin|Roboto:400,700|Roboto+Condensed:400,700" rel="stylesheet">
     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="img/simbolo-negro.png" type="image/x-icon">
     <script src="js/menu.js" defer></script>
-    
-    
-
   </head>
 
   <body>
@@ -45,8 +43,8 @@
                <img src="img/close-icon.svg" alt="close menu" />
               </button>
 
-              <li><a href="index.html/#aboutme" class="selected">About Me</a></li>
-              <li><a href="index.html/#gallery">Gallery</a></li>
+              <li><a href="index.html" class="selected">HOME</a></li>
+              <li><a href="admin.html">ADMIN</a></li>
             </ul>
       
           </nav>
@@ -86,21 +84,15 @@
                               </select>
                             </div>
                             <br>
-                            <button  onclick="guardar()">Submit</button>
+                            <button onclick="guardar()">Submit</button>
                           </form>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-<script src="js/configuracion.js"></script>
 <script src="js/guardar.js"></script>
-<script src="js/firebase.js"></script>
 <script src="js/funtion.js"></script>                
             </div>
 
         </main>
 
     </section>
-
 
     <section class="footer-container">
 
@@ -112,7 +104,24 @@
 
     </section>
 
-
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-analytics.js"></script>
+    
+    <script>
+      var firebaseConfig = {
+      apiKey: "AIzaSyARUxSIQr0l69z6Fshkn7UVBm9J_Zxj4nQ",
+      authDomain: "barber-hunter-623e9.firebaseapp.com",
+      databaseURL: "https://barber-hunter-623e9-default-rtdb.firebaseio.com",
+      projectId: "barber-hunter-623e9",
+      storageBucket: "barber-hunter-623e9.appspot.com",
+      messagingSenderId: "40429391612",
+      appId: "1:40429391612:web:efcfec9781ca068605d179",
+      measurementId: "G-VPRMN8CSPG"
+    };
+      // Initialize Firebases
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+  </script>
 </body>
 
 </html>
