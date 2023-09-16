@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Admin</title>
+    <!---Custom CSS File--->
+    <link rel="stylesheet" href="../css/registration.css" />
+  </head>
+  <body>
+    <section class="container">
+      <header>Admin Form</header>
+      <form action="#" class="form" id="loginForm">
+        <div class="input-box">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Enter username"
+            required
+          />
+        </div>
+
+        <div class="input-box">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter Password"
+            required
+          />
+        </div>
+        <button id="submitBtn">Submit</button>
+      </form>
+    </section>
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+          <!--   ==========================      JAVASCRIPT CODE IN SCRIPT TAG      ==========================    -->
+
+    <!-- Functionality in JavaScript -->
+    <script>
+      const loginForm = document.getElementById("loginForm");
+      const submitBtn = document.getElementById("submitBtn");
+
+      // Store the static username and password
+      const storedUsername = "solucionesdepresenciadigital@gmail.com";
+      const storedPassword = "Elcieloazul";
+
+      submitBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        const username = loginForm.username.value;
+        const password = loginForm.password.value;
+
+        if (username === storedUsername && password === storedPassword) {
+          // Store the username in localStorage
+          localStorage.setItem("admindb", username);
+          // Redirect to the admin dashboard
+          window.location.href = "adminDashboard.html";
+        } else {
+          alert("Login failed. Please check your username and password.");
+        }
+      });
+    </script>
+  </body>
+</html>

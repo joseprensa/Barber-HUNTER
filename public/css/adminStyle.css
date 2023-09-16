@@ -1,0 +1,353 @@
+:root {
+  --main-bg-color: #1d2434;
+  --main-text-color: #1d2434;
+  --second-text-color: #000000;
+  --second-bg-color: #1d2434;
+}
+
+body {
+    background-color: #ffffff;
+}
+
+
+.primary-text {
+  color: var(--main-text-color);
+}
+
+.second-text {
+  color: var(--second-text-color);
+}
+
+.primary-bg {
+  background-color: var(--main-bg-color);
+}
+
+.secondary-bg {
+  background-color: var(--second-bg-color);
+}
+
+.rounded-full {
+  border-radius: 100%;
+}
+
+.navbar {
+    background-color: #1d2434;
+    color: #fff;
+}
+
+.navbar i {
+    color: #fff;
+}
+
+#page-content-wrapper {
+    background: #f2edf3;
+}
+
+
+#wrapper {
+  overflow-x: hidden;
+  background-image: linear-gradient(
+    to right,
+    #baf3d7,
+    #c2f5de,
+    #cbf7e4,
+    #d4f8ea,
+    #ddfaef
+  );
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin 0.25s ease-out;
+  -moz-transition: margin 0.25s ease-out;
+  -o-transition: margin 0.25s ease-out;
+  transition: margin 0.25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+#menu-toggle {
+  cursor: pointer;
+}
+
+.list-group-item {
+  border: none;
+  padding: 20px 30px;
+}
+
+.list-group-item.active {
+  background-color: transparent;
+  color: var(--main-text-color);
+  font-weight: bold;
+  border: none;
+}
+
+.form .input-box {
+  width: 100%;
+  /* margin-top: 5px; */
+}
+.input-box label {
+  color: #333;
+}
+.form :where(.input-box input, .select-box) {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: #707070;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0 15px;
+}
+.input-box input:focus {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+.form .column {
+  display: flex;
+  column-gap: 15px;
+}
+.form .service-box {
+  margin-top: 20px;
+}
+.service-box h3 {
+  color: #333;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.form :where(.service-option, .checkbox) {
+  display: flex;
+  align-items: center;
+  column-gap: 50px;
+  flex-wrap: wrap;
+}
+.form .checkbox {
+  column-gap: 5px;
+}
+.checkbox input {
+  accent-color: rgb(130, 106, 251);
+}
+.form :where(.checkbox input, .checkbox label) {
+  cursor: pointer;
+}
+.checkbox label {
+  color: #707070;
+}
+.address :where(input, .select-box) {
+  margin-top: 15px;
+}
+.select-box select {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  color: #707070;
+  font-size: 1rem;
+}
+.form button {
+  height: 55px;
+  width: 100%;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 30px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #1d2434;
+}
+.form button:hover {
+  background: #10121b;
+}
+
+
+.checkbox input {
+  /* Remove accent-color property */
+  /* accent-color: rgb(130, 106, 251); */
+  /* Adjust the styles for the checkboxes */
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  padding: 0;
+  appearance: none;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  background-color: white;
+}
+
+/* Add custom styling for the checked state */
+.checkbox input:checked {
+  background-color: #1d2434;
+}
+
+/* Add custom styling for the checkbox label */
+.checkbox label {
+  color: #707070;
+  font-size: 1rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  column-gap: 5px;
+}
+
+
+.table > thead {
+  vertical-align: text-top;
+}
+
+
+/* Working Day And Hour CSS */
+.availability {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Subheading for working days and hours */
+.availability h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* Columns within the row */
+.availability .column {
+  display: flex;
+  flex-direction: column;
+  float: left;
+  width: 25%;
+  padding: 10px;
+  /* You can remove the height property unless needed for specific design */
+  /* height: 300px; */
+}
+
+/* Clear floats after the columns */
+.availability .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Styling for input and select elements */
+.availability input {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.availability select {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+
+/* Styling for the "Days" and "To" headings */
+.availability .column h2 {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+/* Styling for the checkboxes */
+.availability input[type="checkbox"] {
+  transform: scale(0.5); /* Adjust the scale factor as needed */
+}
+
+#days {
+  line-height: 1.7;
+}
+
+.holiday-checkbox {
+  margin-right: 40px;
+}
+
+
+/*Responsive*/
+@media screen and (max-width: 500px) {
+  .form .column {
+    flex-wrap: wrap;
+  }
+  .form :where(.service-option, .checkbox) {
+    row-gap: 15px;
+  }
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+
+
+/* Default styles for screens smaller than 768px (e.g., mobile devices) */
+@media screen and (max-width: 768px) {
+  .availability .column {
+    width: 100%; /* Full width for mobile devices */
+  }
+  
+}
+
+/* Media query for screens between 768px and 992px (e.g., tablets) */
+@media (min-width: 768px) and (max-width: 992px) {
+  .availability .column {
+    width: 50%; /* Two columns for tablets */
+  }
+}
+
+/* Media query for screens between 993px and 1200px (e.g., larger tablets) */
+@media (min-width: 993px) and (max-width: 1200px) {
+  .availability .column {
+    width: 33.33%; /* Three columns for larger tablets */
+  }
+}
+
+/* Media query for screens larger than 1200px (e.g., desktop) */
+@media (min-width: 1201px) {
+  .availability .column {
+    width: 25%; /* Four columns for desktop */
+  }
+}
+
+/* Additional responsive adjustments can be added as needed */
+
+/* Example: Adjust padding and font size for smaller screens */
+@media (max-width: 576px) {
+  .availability .column {
+    padding: 5px; /* Reduced padding for small screens */
+  }
+
+  .availability h3 {
+    font-size: 16px; /* Smaller font size for headings */
+  }
+}

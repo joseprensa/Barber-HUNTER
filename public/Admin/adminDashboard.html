@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="../css/adminStyle.css" />
+    <title>Admin Dashboard</title>
+</head>
+
+<body>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div class="bg-white" id="sidebar-wrapper">
+                <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"
+                style="margin-right: 30px;">
+                    <div class="d-flex align-items-center">
+                        <img src="../img/simbolo-negro.png" alt="" width="70px" class="me-2">
+                        <span>BARBER HUNTER</span>
+                    </div>
+                </div>
+            <div class="list-group list-group-flush my-3">
+                <a href="adminDashboard.html" class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                        class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
+                        <a href="./AllCustomersFetch.html" id="usersLink" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                            <i class="fas fa-project-diagram me-2"></i>Customers
+                        </a>
+                        <a href="./AllBarberFetch.html" class="list-group-item list-group-item-action bg-transparent second-text fw-bold barbers">
+                            <i class="fas fa-project-diagram me-2"></i>Barbers
+                        </a>
+                <a href="./admin.html" id="logoutSidebar" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
+                        class="fas fa-power-off me-2"></i>Logout</a>
+            </div>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <nav class="navbar navbar-expand-lg navbar-dark py-4 px-4">
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
+                    <h2 class="fs-2 m-0">Admin Dashboard</h2>
+                </div>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle fw-bold" href="#" id="navbarDropdown"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #fff;">
+                                <i class="fas fa-user me-2"></i><span id="adminNamePlaceholder">Loading...</span>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a id="logoutDropdown" class="dropdown-item" href="./admin.html">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="container-fluid px-4">
+                <div class="row my-5">
+                    <h3 class="fs-4 mb-3">Reservation</h3>
+                    <div class="col">
+                     <div class="table-responsive">
+                        <table class="table bg-white rounded shadow-sm table-hover" id="reservationData">
+                            <thead>
+                                <tr>
+                                    <th>Barber Name</th>
+                                    <th>Barber Email</th>
+                                    <th>Barber Phone</th>
+                                    <th>Customer Name</th>
+                                    <th>Customer Email</th>
+                                    <th>Customer Phone</th>
+                                    <th>Customer BookingDate</th>
+                                    <th>Customer Booking Timing</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Data will be dynamically populated here using JavaScript -->
+                            </tbody>
+                        </table>
+                     </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+    </div>
+
+
+
+                <!--   ==========================      JAVASCRIPT CODE IN SCRIPT TAG      ==========================    -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+      import {
+        getDatabase,
+        ref,
+        push,
+        set,
+        child,
+        get,
+        update
+      } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
+      import {
+        getAuth,
+      } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyD0yIZdTSsU7gFDGnNCLTGv9DuLqbzsX_0",
+        authDomain: "barber-hunter-12291.firebaseapp.com",
+        databaseURL: "https://barber-hunter-12291-default-rtdb.firebaseio.com",
+        projectId: "barber-hunter-12291",
+        storageBucket: "barber-hunter-12291.appspot.com",
+        messagingSenderId: "454962485770",
+        appId: "1:454962485770:web:e3a919cb39cab044e81df3",
+        measurementId: "G-W027N9XFME"
+        };
+
+      const app = initializeApp(firebaseConfig);
+    
+        const db = getDatabase();
+        const auth = getAuth();
+        
+       // Function to populate the table with barber data and appointments
+       function populateTable(barbersData) {
+        const table = document.getElementById("reservationData");
+        const tbody = table.querySelector("tbody");
+
+    for (const barberId in barbersData) {
+        if (barbersData.hasOwnProperty(barberId)) {
+        const barberData = barbersData[barberId];
+        const barberName = barberData.name;
+        const barberEmail = barberData.email;
+        const barberPhone = barberData.phoneNumber;
+        const appointments = barberData.appointments || {};
+
+        // Check if there are no appointments for this barber
+        if (Object.keys(appointments).length === 0) {
+            const row = tbody.insertRow();
+            const barberNameCell = row.insertCell(0);
+            const barberEmailCell = row.insertCell(1);
+            const barberPhoneCell = row.insertCell(2);
+
+            // Set barber name, email, and phone here
+            barberNameCell.textContent = barberName;
+            barberEmailCell.textContent = barberEmail;
+            barberPhoneCell.textContent = barberPhone;
+
+            // Set "-" for the rest of the cells
+            for (let i = 3; i < 8; i++) {
+            const cell = row.insertCell(i);
+            cell.textContent = "-";
+            }
+
+            // Style the cells as needed
+            barberNameCell.style.textDecoration = "underline";
+        } else {
+            for (const appointmentTime in appointments) {
+                if (appointments.hasOwnProperty(appointmentTime)) {
+                    const appointmentDetails = appointments[appointmentTime];
+
+                    for (const customerId in appointmentDetails) {
+                    if (appointmentDetails.hasOwnProperty(customerId)) {
+                        const row = tbody.insertRow();
+
+                        const barberNameCell = row.insertCell(0);
+                        const barberEmailCell = row.insertCell(1);
+                        const barberPhoneCell = row.insertCell(2);
+
+                        // Set barber name, email, and phone here
+                        barberNameCell.textContent = barberName;
+                        barberEmailCell.textContent = barberEmail;
+                        barberPhoneCell.textContent = barberPhone;
+
+                        const customerDetails = appointmentDetails[customerId];
+
+                        const nameCell = row.insertCell(3);
+                        nameCell.textContent = customerDetails.name || "-";
+
+                        const emailCell = row.insertCell(4);
+                        emailCell.textContent = customerDetails.email || "-";
+
+                        const phoneCell = row.insertCell(5);
+                        phoneCell.textContent = customerDetails.phone || "-";
+
+                        const bookingDateCell = row.insertCell(6);
+                        bookingDateCell.textContent = appointmentTime;
+
+                        const bookingTimingCell = row.insertCell(7);
+                        bookingTimingCell.textContent = customerId;
+
+                        // Style the cells as needed
+                        barberNameCell.style.textDecoration = "underline";
+                    }
+                    }
+                }
+                }
+                }
+            }
+    }
+    }
+
+        // Retrieve all barber data from Firebase
+        const barbersRef = ref(db, 'barbers');
+        get(barbersRef)
+        .then((snapshot) => {
+            if (snapshot.exists()) {
+            const barbersData = snapshot.val();
+            populateTable(barbersData);
+            } else {
+            // Handle the case when there are no barbers
+            const tbody = document.querySelector("#reservationData tbody");
+            tbody.innerHTML = ''; 
+            const noBarbersContainer = document.getElementById("noBarbersContainer");
+            const noBarbersHeading = document.createElement("h3");
+            noBarbersHeading.textContent = "No Barbers Found";
+            noBarbersContainer.appendChild(noBarbersHeading);
+            }
+        })
+        .catch((error) => {
+        });
+
+
+    // Function to get the admin name from localStorage
+        function adminNameGet() {
+            const adminNamePlaceholder = document.getElementById("adminNamePlaceholder");
+            const adminName = localStorage.getItem("admindb");
+            if (adminName) {
+            adminNamePlaceholder.textContent = adminName;
+            } else {
+            adminNamePlaceholder.textContent = "Admin";
+            }
+        }
+
+        // Call the function to update the admin name on page load
+        adminNameGet();
+
+        // Function to remove admin name from localStorage
+        function removeAdminNameFromLocalStorage() {
+            localStorage.removeItem("admindb");
+        }
+
+        // Event listener for the Logout link in the dropdown menu
+        const logoutDropdownLink = document.getElementById("logoutDropdown");
+        logoutDropdownLink.addEventListener("click", removeAdminNameFromLocalStorage);
+
+        // Event listener for the Logout link in the sidebar
+        const logoutSidebarLink = document.getElementById("logoutSidebar");
+        logoutSidebarLink.addEventListener("click", removeAdminNameFromLocalStorage);
+
+
+    var el = document.getElementById("wrapper");
+        var toggleButton = document.getElementById("menu-toggle");
+        toggleButton.onclick = function () {
+        el.classList.toggle("toggled");
+    };
+
+    </script>
+</body>
+
+</html>
