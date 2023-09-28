@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Barber X - Barber Shop Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="Free Website Template" name="keywords" />
+    <meta content="Free Website Template" name="description" />
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon" />
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS Libraries -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
+
+    <!-- Template Stylesheet -->
+    <link href="css/profile.css" rel="stylesheet" />
+  </head>
+  <style>
+    /* DropDown */
+    /* Add this CSS to your existing styles */
+  </style>
+  <body>
+    <!-- Top Bar Start -->
+    <div class="top-bar d-none d-md-block">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="top-bar-left">
+              <div class="text">
+                <h2>9:00AM - 5:00PM</h2>
+                <p>Opening Hour Mon - Fri</p>
+              </div>
+              <div class="text">
+                <h2>+123 456 7890</h2>
+                <p>Call Us For Appointment</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="top-bar-right">
+              <div class="social">
+                <a href=""><i class="fab fa-facebook-f"></i></a>
+                <a href=""><i class="fab fa-whatsapp"></i></a>
+                <a href=""><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Top Bar End -->
+
+    <!-- Nav Bar Start -->
+    <div class="navbar navbar-expand-lg bg-dark navbar-dark">
+      <div class="container-fluid">
+        <a href="index.html" class="navbar-brand">
+          <img src="img/simbolo-blanco.png" alt="" />
+          <span class="brand-text">BARBER <span>HUNTER</span></span>
+        </a>
+
+        <button
+          type="button"
+          class="navbar-toggler"
+          data-toggle="collapse"
+          data-target="#navbarCollapse"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div
+          class="collapse navbar-collapse justify-content-between"
+          id="navbarCollapse"
+        >
+          <div class="navbar-nav ml-auto">
+            <a href="index.html" class="nav-item nav-link active">Home</a>
+            <a
+              href="./CustomerRegister.html"
+              id="signupLink"
+              class="nav-item nav-link"
+              >SignUp</a
+            >
+            <a
+              href="./CustomerLogin.html"
+              id="loginLink"
+              class="nav-item nav-link"
+              >Login</a
+            >
+            <div class="dropdown show">
+              <a
+                class="nav-item nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                id="userDropdown"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <i class="fas fa-user"></i>
+                <span id="userName"></span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="userDropdown">
+                <a href="./profile.html" class="dropdown-item" role="button"
+                  >Profile</a
+                >
+                <a href="./CustomerAppointmentTable.html" class="dropdown-item" role="button"
+                >Appointment</a
+              >
+                <a
+                  href="#"
+                  id="logoutButton"
+                  class="dropdown-item"
+                  role="button"
+                  >Logout</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Nav Bar End -->
+
+    <!-- Main -->
+    <div class="profile-card-container">
+      <div class="profile-card" id="profileFieldsContainer">
+        <h2>Profile</h2>
+        <div class="card">
+          <div class="card-body">
+            <i class="fa fa-pen fa-xs edit" id="editProfileButton"></i>
+            <form id="editProfileForm" style="display: none">
+              <input type="text" id="editProfileName" placeholder="Name" />
+              <input type="email" id="editProfileEmail" placeholder="Email" />
+              <input type="tel" id="editProfilePhone" placeholder="Phone" />
+              <button type="button" id="saveProfileButton">Save</button>
+              <!-- Add this line -->
+            </form>
+            <table>
+              <tbody>
+                <tr>
+                  <td>Name</td>
+                  <td>:</td>
+                  <td id="profileName"></td>
+                </tr>
+                <tr>
+                  <td>Email</td>
+                  <td>:</td>
+                  <td id="profileEmail"></td>
+                </tr>
+                <tr>
+                  <td>Phone</td>
+                  <td>:</td>
+                  <td id="profilePhone"></td>
+                </tr>
+                <!-- Other profile card details here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Start -->
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="footer-contact">
+                  <h2>Barber Address</h2>
+                  <p>
+                    <i class="fa fa-map-marker-alt"></i>123 Street, New York,
+                    USA
+                  </p>
+                  <p><i class="fa fa-phone-alt"></i>+012 345 67890</p>
+                  <p><i class="fa fa-envelope"></i>barber@example.com</p>
+                  <div class="footer-social">
+                    <a href=""><i class="fab fa-facebook-f"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                    <a href=""><i class="fab fa-whatsapp"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="footer-link">
+                  <h2>Useful Links</h2>
+                  <p>Home</p>
+                  <p>About</p>
+                  <p>Service</p>
+                  <p>Gallery</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="footer-newsletter">
+              <h2>GET OFFERS</h2>
+              <div class="form">
+                <input class="form-control" placeholder="ENTER YOUR EMAIL" />
+              </div>
+              <button class="btn">SUBSCRIBE</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container copyright">
+        <div class="row">
+          <div class="col-md-6">
+            <p>
+              &copy;
+              <a href="#"
+                ><img src="img/simbolo-negro.png" alt="" width="60px" />Barber
+                Hunter</a
+              >, All Right Reserved.
+            </p>
+          </div>
+          <div class="col-md-6">
+            <p>
+              Designed By
+              <a href="#">
+                <img src="img/simbolo-negro.png" alt="" width="50px" /><span
+                  >Barber Hunter</span
+                >
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer End -->
+
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+    <!--   ==========================      JAVASCRIPT CODE IN SCRIPT TAG      ==========================    -->
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+      import {
+        getDatabase,
+        ref,
+        push,
+        set,
+        child,
+        remove,
+        get,
+        update,
+        orderByChild,
+      } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
+      import {
+        getAuth,
+        signOut,
+      } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyD0yIZdTSsU7gFDGnNCLTGv9DuLqbzsX_0",
+        authDomain: "barber-hunter-12291.firebaseapp.com",
+        databaseURL: "https://barber-hunter-12291-default-rtdb.firebaseio.com",
+        projectId: "barber-hunter-12291",
+        storageBucket: "barber-hunter-12291.appspot.com",
+        messagingSenderId: "454962485770",
+        appId: "1:454962485770:web:e3a919cb39cab044e81df3",
+        measurementId: "G-W027N9XFME",
+      };
+
+      const app = initializeApp(firebaseConfig);
+
+      // Reference to the Firebase Realtime Database
+      const db = getDatabase();
+      const customerAuth = getAuth();
+
+      customerAuth.onAuthStateChanged((user) => {
+        if (user) {
+          // User is signed in, fetch the customer data
+          const userId = user.uid;
+          const userRef = ref(db, "customers/" + userId);
+          get(userRef)
+            .then((snapshot) => {
+              if (snapshot.exists()) {
+                const userData = snapshot.val();
+                updateProfileCard(userData);
+                document.getElementById("userName").textContent =
+                  userData.name || "N/A";
+
+                // Fetch appointmentBooking data
+                const appointmentBookingRef = ref(
+                  db,
+                  "customers/" + userId + "/appointmentBooking"
+                );
+                get(appointmentBookingRef)
+                  .then((appointmentSnapshot) => {
+                    if (appointmentSnapshot.exists()) {
+                      const appointmentBooking = appointmentSnapshot.val();
+                    } else {
+                      console.log("Appointment booking data not found");
+                    }
+                  })
+                  .catch((error) => {
+                    console.error(
+                      "Error fetching appointment booking data:",
+                      error
+                    );
+                  });
+              } else {
+                console.log("User data not found");
+              }
+            })
+            .catch((error) => {
+              console.error("Error fetching user data:", error);
+            });
+
+          // Hide SignUp and Login links
+          document.getElementById("signupLink").style.display = "none";
+          document.getElementById("loginLink").style.display = "none";
+        } else {
+          // User is signed out, show SignUp and Login links
+          document.getElementById("signupLink").style.display = "block";
+          document.getElementById("loginLink").style.display = "block";
+          document.getElementById("userName").textContent = "";
+        }
+      });
+
+      // Get references to elements
+      const editButton = document.getElementById("editProfileButton");
+      const editForm = document.getElementById("editProfileForm");
+      const saveButton = document.getElementById("saveProfileButton");
+      const profileName = document.getElementById("profileName");
+      const profileEmail = document.getElementById("profileEmail");
+      const profilePhone = document.getElementById("profilePhone");
+
+      // Add click event listener to the edit button
+      editButton.addEventListener("click", () => {
+        // Populate edit form with current user data
+        document.getElementById("editProfileName").value =
+          profileName.textContent;
+        document.getElementById("editProfileEmail").value =
+          profileEmail.textContent;
+        document.getElementById("editProfilePhone").value =
+          profilePhone.textContent;
+
+        // Toggle visibility of edit form and profile details
+        editForm.style.display = "block";
+        profileName.parentElement.style.display = "none";
+        profileEmail.parentElement.style.display = "none";
+        profilePhone.parentElement.style.display = "none";
+      });
+
+      // Add click event listener to the save button
+      saveButton.addEventListener("click", () => {
+        // Update profile details with values from the edit form
+        const updatedData = {
+          name: document.getElementById("editProfileName").value,
+          email: document.getElementById("editProfileEmail").value,
+          phone: document.getElementById("editProfilePhone").value,
+        };
+
+        // Update data in Firebase Realtime Database
+        const userId = customerAuth.currentUser.uid;
+        const userRef = ref(db, "customers/" + userId);
+        update(userRef, updatedData)
+          .then(() => {
+            // Update the profile card with the updated data
+            updateProfileCard(updatedData);
+
+            // Toggle visibility of edit form and profile details
+            editForm.style.display = "none";
+            profileName.parentElement.style.display = "table-row";
+            profileEmail.parentElement.style.display = "table-row";
+            profilePhone.parentElement.style.display = "table-row";
+          })
+          .catch((error) => {
+            // console.error("Error updating user data:", error);
+          });
+      });
+
+      // Update the profile card with fetched data
+      function updateProfileCard(userData) {
+        const profileName = document.getElementById("profileName");
+        const profileEmail = document.getElementById("profileEmail");
+        const profilePhone = document.getElementById("profilePhone");
+
+        profileName.textContent = userData.name || "N/A";
+        profileEmail.textContent = userData.email || "N/A";
+        profilePhone.textContent = userData.phone || "N/A";
+      }
+
+      const logoutButton = document.getElementById("logoutButton");
+
+      // Add a click event listener to the "Logout" anchor tag
+      logoutButton.addEventListener("click", () => {
+        // Sign out the user using Firebase Auth
+        signOut(customerAuth)
+          .then(() => {
+            // Redirect to the logout page or perform any other necessary actions
+            // For example, you can redirect the user to a login page
+            window.location.href = "index.html";
+          })
+          .catch((error) => {
+            // console.error("Error signing out:", error);
+          });
+      });
+
+    </script>
+  </body>
+</html>

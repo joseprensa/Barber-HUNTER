@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<!---Coding By CodingLab | www.codinglabweb.com--->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- Favicon -->
+    <link href="../img/favicon.ico" rel="icon" />
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS Libraries -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="../lib/animate/animate.min.css" rel="stylesheet" />
+    <link
+      href="../lib/owlcarousel/assets/owl.carousel.min.css"
+      rel="stylesheet"
+    />
+    <link href="../lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
+    <!---Custom CSS File--->
+    <link rel="stylesheet" href="../css/registration.css" />
+    <link rel="stylesheet" href="../IntTelInput/css/demo.css" />
+    <link rel="stylesheet" href="../IntTelInput/css/intlTelInput.css" />
+  </head>
+  <body>
+    <!-- Nav Bar Start -->
+    <div class="navbar navbar-expand-lg bg-dark navbar-dark">
+      <div class="container-fluid">
+        <a href="#" class="navbar-brand">
+          <img src="img/simbolo-blanco.png" alt="" />
+          <span class="brand-text">BARBER <span>HUNTER</span></span>
+        </a>
+
+        <button
+          type="button"
+          class="navbar-toggler"
+          data-toggle="collapse"
+          data-target="#navbarCollapse"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div
+          class="collapse navbar-collapse justify-content-between"
+          id="navbarCollapse"
+        >
+          <div class="navbar-nav ml-auto">
+            <a
+              href="../index.html"
+              id="homepage"
+              class="nav-item nav-link"
+              target="_blank"
+              >Home</a
+            >
+            <a
+              href="./barberRegister.html"
+              id="signupLink"
+              class="nav-item nav-link"
+              >SignUp</a
+            >
+            <a
+              href="./barberLogin.html"
+              id="loginLink"
+              class="nav-item nav-link"
+              >Login</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Nav Bar End -->
+
+    <!-- Form -->
+    <section class="container form-container">
+      <header>Barber Registration Form</header>
+      <form action="#" class="form">
+        <div class="input-box">
+          <label for="name">Full Name</label>
+          <input
+            type="text"
+            placeholder="Enter full name"
+            id="name"
+            name="name"
+            required
+          />
+          <span class="error" id="nameError"></span>
+        </div>
+
+        <div class="input-box">
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter email address"
+            required
+          />
+          <span class="error" id="emailError"></span>
+        </div>
+
+        <div class="input-box">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter Password"
+            required
+          />
+        </div>
+
+        <div class="column">
+          <div class="input-box">
+            <label for="tel">Phone Number</label>
+            <input
+              type="number"
+              id="tel"
+              name="tel"
+              placeholder="Enter phone number"
+              required
+            />
+            <span class="error" id="telError"></span>
+            <input type="hidden" name="countryCode" id="countryCode" />
+          </div>
+        </div>
+        <div class="input-box address">
+          <label for="address">Address</label>
+          <input
+            type="text"
+            placeholder="Enter street address"
+            name="address"
+            id="address"
+            required
+          />
+          <span class="error" id="addressError"></span>
+        </div>
+        <div class="service-box">
+          <h3>Select Service</h3>
+          <div class="select-option">
+            <div class="checkbox">
+              <input type="checkbox" id="style1" value="Cut & Style" checked />
+              <label for="style1">Cut & Style</label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="style2" value="Washing" />
+              <label for="style2">Washing</label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="style3" value="Beard Shave" />
+              <label for="style3">Beard Shave</label>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="availability">
+          <h3>Set Working Days and Hours</h3>
+          <div class="row">
+            <div class="column">
+              <h2>Days</h2>
+              <div id="days">
+                <p>Monday</p>
+                <p>Tuesday</p>
+                <p>Wednesday</p>
+                <p>Thursday</p>
+                <p>Friday</p>
+                <p>Saturday</p>
+                <p>Sunday</p>
+              </div>
+            </div>
+            <div class="column">
+              <h2>From</h2>
+              <div class="startTimeDiv" style="line-height: 2.3">
+                <select name="mondayStartTime" id="mondayStartTime">
+                  <!-- Options  -->
+                </select>
+                <select name="tuesdayStartTime" id="tuesdayStartTime">
+                  <!-- Options  -->
+                </select>
+                <select name="wednesdayStartTime" id="wednesdayStartTime">
+                  <!-- Options  -->
+                </select>
+                <select name="thursdayStartTime" id="thursdayStartTime">
+                  <!-- Options  -->
+                </select>
+                <select name="fridayStartTime" id="fridayStartTime">
+                  <!-- Options  -->
+                </select>
+                <select name="saturdayStartTime" id="saturdayStartTime">
+                  <!-- Options  -->
+                </select>
+                <select name="sundayStartTime" id="sundayStartTime">
+                  <!-- Options  -->
+                </select>
+              </div>
+            </div>
+            <div class="column">
+              <h2>To</h2>
+              <div class="endTmeDiv" style="line-height: 2.3">
+                <select name="mondayToTime" id="mondayToTime">
+                  <!-- Options -->
+                </select>
+                <select name="tuesdayToTime" id="tuesdayToTime">
+                  <!-- Options -->
+                </select>
+                <select name="wednesdayToTime" id="wednesdayToTime">
+                  <!-- Options -->
+                </select>
+                <select name="thursdayToTime" id="thursdayToTime">
+                  <!-- Options -->
+                </select>
+                <select name="fridayToTime" id="fridayToTime">
+                  <!-- Options -->
+                </select>
+                <select name="saturdayToTime" id="saturdayToTime">
+                  <!-- Options -->
+                </select>
+                <select name="sundayToTime" id="sundayToTime">
+                  <!-- Options -->
+                </select>
+              </div>
+            </div>
+            <div class="column">
+              <h2>Holiday</h2>
+              <div class="holiday-checkbox">
+                <input type="checkbox" id="checkbox-1" />
+                <input type="checkbox" id="checkbox-2" />
+                <input type="checkbox" id="checkbox-3" />
+                <input type="checkbox" id="checkbox-4" />
+                <input type="checkbox" id="checkbox-5" />
+                <input type="checkbox" id="checkbox-6" />
+                <input type="checkbox" id="checkbox-7" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button id="submitBtn">Submit</button>
+
+        <div style="text-align: center">
+          <p style="margin: 0">
+            Already have an account?
+            <a href="barberLogin.html" style="color: #1d2434; font-weight: bold"
+              >Login</a
+            >
+          </p>
+        </div>
+      </form>
+    </section>
+
+    <!-- Footer Start -->
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="footer-contact">
+                  <h2>Barber Address</h2>
+                  <p>
+                    <i class="fa fa-map-marker-alt"></i>123 Street, New York,
+                    USA
+                  </p>
+                  <p><i class="fa fa-phone-alt"></i>+012 345 67890</p>
+                  <p><i class="fa fa-envelope"></i>barber@example.com</p>
+                  <div class="footer-social">
+                    <a href=""><i class="fab fa-facebook-f"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                    <a href=""><i class="fab fa-whatsapp"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="footer-link">
+                  <h2>Useful Links</h2>
+                  <p>Home</p>
+                  <p>About</p>
+                  <p>Service</p>
+                  <p>Gallery</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="footer-newsletter">
+              <h2>GET OFFERS</h2>
+              <div class="form">
+                <input class="form-control" placeholder="ENTER YOUR EMAIL" />
+              </div>
+              <button class="btn">SUBSCRIBE</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container copyright">
+        <div class="row">
+          <div class="col-md-6">
+            <p>
+              &copy;
+              <a href="#"
+                ><img src="img/simbolo-negro.png" alt="" width="60px" />Barber
+                Hunter</a
+              >, All Right Reserved.
+            </p>
+          </div>
+          <div class="col-md-6">
+            <p>
+              Designed By
+              <a href="#">
+                <img src="img/simbolo-negro.png" alt="" width="50px" /><span
+                  >Barber Hunter</span
+                >
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer End -->
+
+    <!--   ==========================      JAVASCRIPT CODE IN SCRIPT TAG      ==========================    -->
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/easing/easing.min.js"></script>
+    <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="../lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="../lib/lightbox/js/lightbox.min.js"></script>
+    <!-- Functionality in Javascript -->
+    <script src="../IntTelInput/js/intlTelInput.js"></script>
+    <!-- Include Firebase v10 -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+      import {
+        getDatabase,
+        ref,
+        push,
+        set,
+        child,
+        get,
+      } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
+      import {
+        getAuth,
+        createUserWithEmailAndPassword,
+      } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyD0yIZdTSsU7gFDGnNCLTGv9DuLqbzsX_0",
+        authDomain: "barber-hunter-12291.firebaseapp.com",
+        databaseURL: "https://barber-hunter-12291-default-rtdb.firebaseio.com",
+        projectId: "barber-hunter-12291",
+        storageBucket: "barber-hunter-12291.appspot.com",
+        messagingSenderId: "454962485770",
+        appId: "1:454962485770:web:e3a919cb39cab044e81df3",
+        measurementId: "G-W027N9XFME",
+      };
+
+      const app = initializeApp(firebaseConfig);
+
+      const db = getDatabase();
+      const barberAuth = getAuth();
+
+      const phoneInput = window.intlTelInput(document.querySelector("#tel"), {
+        initialCountry: "auto",
+        separateDialCode: true,
+        utilsScript: "../IntTelInput/js/utils.js", // Make sure to include the correct utilsScript URL
+      });
+
+      const form = document.querySelector(".form");
+      const days = document.getElementById("days");
+
+      const mondayStartTime = document.getElementById("mondayStartTime");
+      const tuesdayStartTime = document.getElementById("tuesdayStartTime");
+      const wednesdayStartTime = document.getElementById("wednesdayStartTime");
+      const thursdayStartTime = document.getElementById("thursdayStartTime");
+      const fridayStartTime = document.getElementById("fridayStartTime");
+      const saturdayStartTime = document.getElementById("saturdayStartTime");
+      const sundayStartTime = document.getElementById("sundayStartTime");
+
+      const mondayToTime = document.getElementById("mondayToTime");
+      const tuesdayToTime = document.getElementById("tuesdayToTime");
+      const wednesdayToTime = document.getElementById("wednesdayToTime");
+      const thursdayToTime = document.getElementById("thursdayToTime");
+      const fridayToTime = document.getElementById("fridayToTime");
+      const saturdayToTime = document.getElementById("saturdayToTime");
+      const sundayToTime = document.getElementById("sundayToTime");
+
+      const submitBtn = document.getElementById("submitBtn");
+      submitBtn.addEventListener("click", async (e) => {
+        e.preventDefault();
+
+        document.getElementById("nameError").textContent = "";
+        document.getElementById("emailError").textContent = "";
+        document.getElementById("telError").textContent = "";
+        document.getElementById("addressError").textContent = "";
+        let isValid = true;
+
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const address = form.address.value;
+        const selectedCountry = phoneInput.getSelectedCountryData();
+        const countryCode = selectedCountry.dialCode;
+        const phoneNumber = phoneInput.getNumber();
+
+        // Gather selected services
+        const services = Array.from(
+          form.querySelectorAll(".checkbox input:checked")
+        ).map((input) => input.value);
+
+        // Gather working days and hours
+        const workingDays = Array.from(days.children).map(
+          (day) => day.textContent
+        );
+        const startTime = {
+          Monday: form.mondayStartTime.value,
+          Tuesday: form.tuesdayStartTime.value,
+          Wednesday: form.wednesdayStartTime.value,
+          Thursday: form.thursdayStartTime.value,
+          Friday: form.fridayStartTime.value,
+          Saturday: form.saturdayStartTime.value,
+          Sunday: form.sundayStartTime.value,
+        };
+        const endTime = {
+          Monday: form.mondayToTime.value,
+          Tuesday: form.tuesdayToTime.value,
+          Wednesday: form.wednesdayToTime.value,
+          Thursday: form.thursdayToTime.value,
+          Friday: form.fridayToTime.value,
+          Saturday: form.saturdayToTime.value,
+          Sunday: form.sundayToTime.value,
+        };
+
+        // Gather holiday information from checkboxes
+        const holidays = {};
+        for (let i = 1; i <= 7; i++) {
+          const checkbox = document.getElementById(`checkbox-${i}`);
+          holidays[workingDays[i - 1]] = checkbox.checked;
+        }
+
+        if (name.trim() === "") {
+          document.getElementById("nameError").textContent =
+            "Please fill in your full name.";
+          isValid = false;
+        }
+
+        if (email.trim() === "") {
+          document.getElementById("emailError").textContent =
+            "Please fill in your email address.";
+          isValid = false;
+        }
+
+        if (email.trim() === "") {
+          document.getElementById("telError").textContent =
+            "Please fill in your Phone Number.";
+          isValid = false;
+        }
+
+        if (email.trim() === "") {
+          document.getElementById("addressError").textContent =
+            "Please fill in your Address.";
+          isValid = false;
+        }
+
+        try {
+          // Create user account in Firebase Authentication
+          const userCredential = await createUserWithEmailAndPassword(
+            barberAuth,
+            email,
+            password
+          );
+          const barber = userCredential.user;
+
+          // Save barber data to Realtime Database
+          const barberData = {
+            name,
+            email,
+            phoneNumber,
+            countryCode,
+            address,
+            services,
+            workingDays,
+            startTime,
+            endTime,
+            holidays,
+          };
+
+          await set(ref(db, `barbers/${barber.uid}`), barberData);
+
+          alert("Barber registration successful!");
+          setTimeout(() => {
+            window.location.href = "BarberDashboard.html";
+          }, 1000); // 1000 milliseconds = 1 second
+        } catch (error) {
+          if (error.code === "auth/email-already-in-use") {
+            alert("This email is already in use");
+          } else {
+            alert("Error creating user: " + error.message);
+          }
+        }
+      });
+
+      // Function to populate select box options
+      function generateTimeOptions(selectElement) {
+          for (let hour = 0; hour < 24; hour++) {
+            for (let minute = 0; minute < 60; minute += 30) {
+              const amPm = hour >= 12 ? "PM" : "AM";
+              const hour12Format = hour % 12 || 12;
+              const formattedTime = `${hour12Format
+                .toString()
+                .padStart(2, "0")}:${minute
+                .toString()
+                .padStart(2, "0")} ${amPm}`;
+
+              const option = document.createElement("option");
+              option.value = formattedTime;
+              option.textContent = formattedTime;
+
+              selectElement.appendChild(option);
+            }
+          }
+        }
+
+      generateTimeOptions(mondayStartTime);
+      generateTimeOptions(tuesdayStartTime);
+      generateTimeOptions(wednesdayStartTime);
+      generateTimeOptions(thursdayStartTime);
+      generateTimeOptions(fridayStartTime);
+      generateTimeOptions(saturdayStartTime);
+      generateTimeOptions(sundayStartTime);
+
+      generateTimeOptions(mondayToTime);
+      generateTimeOptions(tuesdayToTime);
+      generateTimeOptions(wednesdayToTime);
+      generateTimeOptions(thursdayToTime);
+      generateTimeOptions(fridayToTime);
+      generateTimeOptions(saturdayToTime);
+      generateTimeOptions(sundayToTime);
+
+      // Loop through checkboxes and add event listeners
+      for (let i = 1; i <= 7; i++) {
+        const checkbox = document.getElementById(`checkbox-${i}`);
+
+        if (checkbox) {
+          checkbox.addEventListener("change", function () {
+            if (checkbox.checked) {
+              // Checkbox is checked
+              // console.log(`Checkbox ${i} is checked`);
+              // You can perform your actions here when a checkbox is checked
+            } else {
+              // Checkbox is unchecked
+              // console.log(`Checkbox ${i} is unchecked`);
+              // You can perform your actions here when a checkbox is unchecked
+            }
+          });
+        }
+      }
+
+      // const barberTimeSelect = document.getElementById("barberTime");
+      // function generateTimeOptions() {
+      //   const startTime = 9;
+      //   const endTime = 17; // 5:00 PM
+      //   const interval = 0.5; // In hours (30 minutes)
+
+      //   for (let hour = startTime; hour <= endTime; hour++) {
+      //     for (let minute = 0; minute < 60; minute += interval * 60) {
+      //       const formattedTime = `${hour.toString().padStart(2, "0")}:${minute
+      //         .toString()
+      //         .padStart(2, "0")}`;
+      //       const amPm = hour >= 12 ? "PM" : "AM";
+      //       const optionText = `${formattedTime} ${amPm}`;
+
+      //       const option = document.createElement("option");
+      //       option.value = formattedTime;
+      //       option.textContent = optionText;
+
+      //       barberTimeSelect.appendChild(option);
+      //     }
+      //   }
+      // }
+
+      // generateTimeOptions();
+    </script>
+  </body>
+</html>

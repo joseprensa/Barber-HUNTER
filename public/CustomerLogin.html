@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<!---Coding By CodingLab | www.codinglabweb.com--->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>SignUp Form</title>
+    <!---Custom CSS File--->
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS Libraries -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- CryptoJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  </head>
+  <style>
+    body {
+      background: #1d2434;
+    }
+  </style>
+  <body>
+    <!-- Top Bar Start -->
+    <div class="top-bar d-none d-md-block">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="top-bar-left">
+              <div class="text">
+                <h2>9:00AM - 5:00PM</h2>
+                <p>Opening Hour Mon - Fri</p>
+              </div>
+              <div class="text">
+                <h2>+123 456 7890</h2>
+                <p>Call Us For Appointment</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="top-bar-right">
+              <div class="social">
+                <a href=""><i class="fab fa-facebook-f"></i></a>
+                <a href=""><i class="fab fa-whatsapp"></i></a>
+                <a href=""><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Top Bar End -->
+
+    <!-- Nav Bar Start -->
+    <div class="navbar navbar-expand-lg bg-dark navbar-dark">
+      <div class="container-fluid">
+        <a href="index.html" class="navbar-brand">
+          <img src="img/simbolo-blanco.png" alt="" />
+          <span class="brand-text">BARBER <span>HUNTER</span></span>
+        </a>
+        <button
+          type="button"
+          class="navbar-toggler"
+          data-toggle="collapse"
+          data-target="#navbarCollapse"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div
+          class="collapse navbar-collapse justify-content-between"
+          id="navbarCollapse"
+        >
+          <div class="navbar-nav ml-auto">
+            <a href="index.html" class="nav-item nav-link active">Home</a>
+            <!-- <a
+              href="./appointment.html"
+              class="nav-item nav-link"
+              id="navbarAvatar"
+              >Appointment</a
+            > -->
+            <a
+              href="CustomerRegister.html"
+              class="nav-item nav-link"
+              id="navbarAvatar2"
+              >SignUp</a
+            >
+            <a href="#" class="nav-item nav-link" id="navbarAvatar">Login</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Nav Bar End -->
+
+    <!-- SignUp Form -->
+    <section class="appointment_container">
+      <header>Login Form</header>
+      <form action="#" class="form" id="loginForm">
+        <div class="input-box">
+          <label for="email">Email</label>
+          <input
+            type="text"
+            placeholder="Enter Your Email"
+            required
+            name="email"
+            id="email"
+          />
+        </div>
+
+        <div class="input-box">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            placeholder="Enter Password"
+            required
+            name="password"
+            id="password"
+          />
+        </div>
+        <button id="submitBtn">Submit</button>
+
+        <div style="text-align: center">
+          <p style="margin: 0">
+            Create an account
+            <a
+              href="CustomerRegister.html"
+              style="color: #1d2434; font-weight: bold"
+              >SignUp now</a
+            >
+          </p>
+        </div>
+      </form>
+    </section>
+    <!-- Appointment End -->
+
+    <!-- Footer Start -->
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="footer-contact">
+                  <h2>Barber Address</h2>
+                  <p>
+                    <i class="fa fa-map-marker-alt"></i>123 Street, New York,
+                    USA
+                  </p>
+                  <p><i class="fa fa-phone-alt"></i>+012 345 67890</p>
+                  <p><i class="fa fa-envelope"></i>barber@example.com</p>
+                  <div class="footer-social">
+                    <a href=""><i class="fab fa-facebook-f"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                    <a href=""><i class="fab fa-whatsapp"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="footer-link">
+                  <h2>Useful Links</h2>
+                  <p>Home</p>
+                  <p>About</p>
+                  <p>Service</p>
+                  <p>Gallery</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="footer-newsletter">
+              <h2>GET OFFERS</h2>
+              <div class="form">
+                <input class="form-control" placeholder="ENTER YOUR EMAIL" />
+              </div>
+              <button class="btn">SUBSCRIBE</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container copyright">
+        <div class="row">
+          <div class="col-md-6">
+            <p>
+              &copy;
+              <a href="#"
+                ><img src="img/simbolo-negro.png" alt="" width="60px" />Barber
+                Hunter</a
+              >, All Right Reserved.
+            </p>
+          </div>
+          <div class="col-md-6">
+            <p>
+              Designed By
+              <a href="#">
+                <img src="img/simbolo-negro.png" alt="" width="50px" /><span
+                  >Barber Hunter</span
+                >
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer End -->
+
+    <!--   ==========================      JAVASCRIPT CODE IN SCRIPT TAG      ==========================    -->
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-analytics.js";
+      import {
+        getDatabase,
+        ref,
+        set,
+        child,
+        get,
+      } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
+      import {
+        getAuth,
+        signInWithEmailAndPassword,
+      } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyD0yIZdTSsU7gFDGnNCLTGv9DuLqbzsX_0",
+        authDomain: "barber-hunter-12291.firebaseapp.com",
+        databaseURL: "https://barber-hunter-12291-default-rtdb.firebaseio.com",
+        projectId: "barber-hunter-12291",
+        storageBucket: "barber-hunter-12291.appspot.com",
+        messagingSenderId: "454962485770",
+        appId: "1:454962485770:web:e3a919cb39cab044e81df3",
+        measurementId: "G-W027N9XFME",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getDatabase();
+      const customerAuth = getAuth();
+
+      // ------------------  AUTHENTICATION PROCESS --------------------------
+      let email = document.getElementById("email");
+      let password = document.getElementById("password");
+      let form = document.querySelector(".form");
+
+      // login.js
+      const loginForm = document.getElementById("loginForm");
+      const submitBtn = document.getElementById("submitBtn");
+
+      submitBtn.addEventListener("click", async (e) => {
+        e.preventDefault();
+
+        const email = loginForm.email.value;
+        const password = loginForm.password.value;
+
+        try {
+          await signInWithEmailAndPassword(customerAuth, email, password);
+          window.location.href = "index.html";
+        } catch (error) {
+          // alert("Login failed: " + error.message);
+          if (error.code === "auth/wrong-password") {
+            alert("Incorrect password. Please try again.");
+          } else if (error.code === "auth/user-not-found") {
+            alert("User not found. Please check your email or sign up.");
+          } else {
+            alert("Login failed: " + error.message);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

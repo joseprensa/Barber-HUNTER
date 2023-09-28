@@ -1,127 +1,884 @@
 <!DOCTYPE html>
+<!---Coding By CodingLab | www.codinglabweb.com--->
 <html lang="en">
-
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!--<title>Registration Form in HTML CSS</title>-->
+    <!---Custom CSS File--->
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS Libraries -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
 
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <title></title>
-
-    <link href="https://fonts.googleapis.com/css?family=Cabin|Roboto:400,700|Roboto+Condensed:400,700" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="img/simbolo-negro.png" type="image/x-icon">
-    <script src="js/menu.js" defer></script>
+    <!-- CryptoJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
   </head>
+  <style>
+    body {
+      background-image: url("/img/shop3.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .appointment_container {
+      font-family: Arial, sans-serif;
+      width: 80%;
+      padding: 20px;
+      border: 1px solid #ccc;
+      background-color: #f8f8f8;
+    }
 
+    header {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    #barberDetails {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+
+    #barberDetails h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    #barberDetails p {
+      margin: 5px 0;
+    }
+
+    #services,
+    #availableTimings {
+      margin-bottom: 10px;
+    }
+
+    #services h2,
+    #availableTimings h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    #serviceList {
+      list-style: disc;
+      margin-left: 20px;
+    }
+
+    #timingSelect {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .appointment_container .form {
+      margin: 0;
+    }
+    label {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
   <body>
-
-    <section class="header-container">
-
-      <header class="header-content topheader">
-
-        <div class="main-logo logo">
-
-          <img src="img/simbolo-blanco.png" alt="logo" height="50" width="50">
-         <span> <a href="index.html">BARBER <BR> HUNTER</BR></a> </span>
-  
+    <!-- Top Bar Start -->
+    <div class="top-bar d-none d-md-block">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="top-bar-left">
+              <div class="text">
+                <h2>9:00AM - 5:00PM</h2>
+                <p>Opening Hour Mon - Fri</p>
+              </div>
+              <div class="text">
+                <h2>+123 456 7890</h2>
+                <p>Call Us For Appointment</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="top-bar-right">
+              <div class="social">
+                <a href="Barber/barberLogin.html" id="barber_login">
+                  <button
+                    class="btn btn-primary"
+                    style="
+                      background: #1d2434;
+                      border: none;
+                      text-overflow: ellipsis;
+                      font-size: 10px;
+                    "
+                  >
+                    Barber As Login
+                  </button>
+                </a>
+              </div>
+              <div class="social">
+                <a href=""><i class="fab fa-facebook-f"></i></a>
+                <a href=""><i class="fab fa-whatsapp"></i></a>
+                <a href=""><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+    <!-- Top Bar End -->
 
-          <nav class="main-nav topnav">
+    <!-- Nav Bar Start -->
+    <div class="navbar navbar-expand-lg bg-dark navbar-dark">
+      <div class="container-fluid">
+        <a href="index.html" class="navbar-brand">
+          <img src="img/simbolo-blanco.png" alt="" />
+          <span class="brand-text">BARBER <span>HUNTER</span></span>
+        </a>
+        <button
+          type="button"
+          class="navbar-toggler"
+          data-toggle="collapse"
+          data-target="#navbarCollapse"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <button class="open-menu" id="ham" aria-label="open-menu">
-              <img src="img/hamburger-icon.svg" alt="open-menu" />
+        <div
+          class="collapse navbar-collapse justify-content-between"
+          id="navbarCollapse"
+        >
+          <div class="navbar-nav ml-auto">
+            <a href="index.html" class="nav-item nav-link active">Home</a>
+            <!-- <a href="#about" class="nav-item nav-link">About</a> -->
+            <!-- <a href="#service" class="nav-item nav-link">Service</a> -->
+            <!-- <a href="#gallery" class="nav-item nav-link">Gallery</a> -->
+            <a
+              href="./appointment.html"
+              class="nav-item nav-link"
+              id="appointmentLink"
+              >Appointment</a
+            >
+            <a
+              href="./CustomerLogin.html"
+              class="nav-item nav-link"
+              id="loginLink"
+              >Login</a
+            >
+            <div class="dropdown show">
+              <a
+                class="nav-item nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                id="userDropdown"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <i class="fas fa-user"></i>
+                <span id="userName"></span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="userDropdown">
+                <a href="./profile.html" class="dropdown-item" role="button"
+                  >Profile</a
+                >
+                <a
+                  href="./CustomerAppointmentTable.html"
+                  class="dropdown-item"
+                  role="button"
+                  >Appointment</a
+                >
+                <a
+                  href="#"
+                  id="logoutButton"
+                  class="dropdown-item"
+                  role="button"
+                  >Logout</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Nav Bar End -->
+
+    <!-- Appointment Form -->
+    <section class="appointment_container">
+      <header>Barber Appointment Form</header>
+      <div id="barberDetails">
+        <h2>Barber Details:</h2>
+        <p id="barberName"></p>
+        <p id="barberEmail"></p>
+        <p id="barberAddress"></p>
+        <p id="barberPhone"></p>
+      </div>
+      <div id="services">
+        <h2>Services:</h2>
+        <ul id="serviceList"></ul>
+      </div>
+
+      <div id="availableTimings">
+        <h2>Available Timings:</h2>
+        <select id="timingSelect"></select>
+      </div>
+      <form action="#" class="form">
+        <div class="service-box">
+          <h3>Select Service</h3>
+          <div class="select-option">
+            <div class="checkbox">
+              <input type="checkbox" id="style1" value="Cut & Style" checked />
+              <label for="style1">Cut & Style</label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="style2" value="Washing" />
+              <label for="style2">Washing</label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="style3" value="Beard Shave" />
+              <label for="style3">Beard Shave</label>
+            </div>
+          </div>
+        </div>
+        <div class="input-box">
+          <label for="date">Booking Date</label>
+          <input
+            type="date"
+            id="date"
+            name="date"
+            placeholder="Enter birth date"
+          />
+        </div>
+        <div class="input-box address">
+          <label for="customerBookingTime">Timing</label>
+          <div class="column">
+            <div class="select-box">
+              <select id="customerBookingTime" name="customerBookingTime">
+                <!-- Options for available time slots will be added here -->
+              </select>
+            </div>
+          </div>
+        </div>
+        <button>Submit</button>
+      </form>
+    </section>
+    <!-- Appointment End -->
+
+    <!-- Success Modal -->
+    <div
+      class="modal fade"
+      id="successModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="successModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="successModalLabel">
+              Booking Successful
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+              id="closeSuccessModalBtn"
+            >
+              <span aria-hidden="true">&times;</span>
             </button>
+          </div>
+          <div
+            class="modal-body text-center align-items-center d-flex flex-column"
+          >
+            <p>Your appointment has been successfully booked. Thank you!</p>
+            <i class="fas fa-check-circle fa-3x text-success"></i>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer Start -->
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="footer-contact">
+                  <h2>Barber Address</h2>
+                  <p>
+                    <i class="fa fa-map-marker-alt"></i>123 Street, New York,
+                    USA
+                  </p>
+                  <p><i class="fa fa-phone-alt"></i>+012 345 67890</p>
+                  <p><i class="fa fa-envelope"></i>barber@example.com</p>
+                  <div class="footer-social">
+                    <a href=""><i class="fab fa-facebook-f"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                    <a href=""><i class="fab fa-whatsapp"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="footer-link">
+                  <h2>Useful Links</h2>
+                  <p>Home</p>
+                  <p>About</p>
+                  <p>Service</p>
+                  <p>Gallery</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="footer-newsletter">
+              <h2>GET OFFERS</h2>
+              <div class="form">
+                <input class="form-control" placeholder="ENTER YOUR EMAIL" />
+              </div>
+              <button class="btn">SUBSCRIBE</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container copyright">
+        <div class="row">
+          <div class="col-md-6">
+            <p>
+              &copy;
+              <a href="#"
+                ><img src="img/simbolo-negro.png" alt="" width="60px" />Barber
+                Hunter</a
+              >, All Right Reserved.
+            </p>
+          </div>
+          <div class="col-md-6">
+            <p>
+              Designed By
+              <a href="#">
+                <img src="img/simbolo-negro.png" alt="" width="50px" /><span
+                  >Barber Hunter</span
+                >
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer End -->
 
-            <ul id="navigation" class="menu mobile-menu">
+    <!--   ==========================      JAVASCRIPT CODE IN SCRIPT TAG      ==========================    -->
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
 
-              <button class="close-menu" aria-label="close-menu">
-               <img src="img/close-icon.svg" alt="close menu" />
-              </button>
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
 
-              <li><a href="index.html" class="selected">HOME</a></li>
-              <li><a href="admin.html">ADMIN</a></li>
-            </ul>
-      
-          </nav>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-analytics.js";
+      import {
+        getDatabase,
+        ref,
+        set,
+        child,
+        get,
+        update,
+        push,
+      } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
+      import {
+        getAuth,
+        signOut,
+      } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
 
-      </header>
+      const firebaseConfig = {
+        apiKey: "AIzaSyD0yIZdTSsU7gFDGnNCLTGv9DuLqbzsX_0",
+        authDomain: "barber-hunter-12291.firebaseapp.com",
+        databaseURL: "https://barber-hunter-12291-default-rtdb.firebaseio.com",
+        projectId: "barber-hunter-12291",
+        storageBucket: "barber-hunter-12291.appspot.com",
+        messagingSenderId: "454962485770",
+        appId: "1:454962485770:web:e3a919cb39cab044e81df3",
+        measurementId: "G-W027N9XFME",
+      };
 
-  </section>
+      const app = initializeApp(firebaseConfig);
 
+      const db = getDatabase();
+      const customerAuth = getAuth();
+      // -------------------------- THE REFERENCES ----------------------------------
+      let date = document.getElementById("date");
+      let time = document.getElementById("time");
+      const userDropdownContainer = document.querySelector(".dropdown.show");
 
-    <section class="appointment" id="book">
+      // =================================   PART  1 OF JAVASCRIPT CODE    =========================================
+      customerAuth.onAuthStateChanged((user) => {
+        const userNameElement = document.getElementById("userName");
+        const logoutButton = document.getElementById("logoutButton");
+        const appointmentLink = document.getElementById("appointmentLink");
+        const loginLink = document.getElementById("loginLink");
 
-        <main>
+        if (user) {
+          // User is logged in
+          userNameElement.textContent = "Loading...";
+          const customerDataRef = ref(db, `customers/${user.uid}`);
+          get(customerDataRef).then((snapshot) => {
+            const customerData = snapshot.val();
+            if (customerData) {
+              userNameElement.textContent = customerData.name;
+              appointmentLink.style.display = "none";
+              loginLink.style.display = "none";
+              userDropdownContainer.style.display = "block";
+              $(userDropdownContainer).find(".dropdown-toggle").dropdown();
+            }
+          });
+        } else {
+          // User is not logged in
+          userNameElement.textContent = "";
+          appointmentLink.style.display = "block";
+          loginLink.style.display = "block";
+          userDropdownContainer.style.display = "none";
+        }
+      });
 
-             <div class="appointment-content">
+      // Logout
+      const logoutButton = document.getElementById("logoutButton");
+      logoutButton.addEventListener("click", async (event) => {
+        event.stopPropagation();
+        try {
+          await signOut(customerAuth);
+          window.location.href = "index.html";
+        } catch (error) {
+          alert("Logout failed: " + error.message);
+        }
+      });
 
-                        <form id="appointment-form">
-                            <div>
-                              <label for="name">Name:</label>
-                              <input type="text" id="name" name="name">
-                            </div>
-                            <div>
-                              <label for="email">Email:</label>
-                              <input type="email" id="email" name="email">
-                            </div>
-                            <div>
-                              <label for="tel">Phone:</label>
-                              <input type="tel" id="Phone" name="Phone">
-                            </div>
-                            <div>
-                              <label for="date">Date:</label>
-                              <input type="date" id="date" name="date">
-                            </div>
-                            <div>
-                              <label for="time">Time:</label>
-                              <select id="time" name="time">
-                                <!-- Options for available time slots will be added here -->
-                              </select>
-                            </div>
-                            <br>
-                            <button onclick="guardar()">Submit</button>
-                          </form>
-<script src="js/guardar.js"></script>
-<script src="js/funtion.js"></script>                
+      const barberLoginButton = document.getElementById("barber_login");
+      barberLoginButton.addEventListener("click", async (e) => {
+        e.preventDefault();
+
+        // Check if the customer is authenticated
+        if (customerAuth.currentUser) {
+          try {
+            await signOut(customerAuth); // Logout the customer
+            // Redirect to the Barber Login page
+            window.location.href = "Barber/barberLogin.html";
+          } catch (error) {
+            // console.error("Logout failed: " + error.message);
+          }
+        } else {
+          // If the customer is not authenticated, simply navigate to the Barber Login page
+          window.location.href = "Barber/barberLogin.html";
+        }
+      });
+
+      // =================================   PART 2 OF JAVASCRIPT CODE    =========================================
+      document.addEventListener("DOMContentLoaded", () => {
+        // Retrieve the selected barber details from localStorage
+        const selectedBarberJSON = localStorage.getItem("selectedBarber");
+        if (selectedBarberJSON) {
+          const selectedBarber = JSON.parse(selectedBarberJSON);
+
+          const barberNameElement = document.getElementById("barberName");
+          const barberEmail = document.getElementById("barberEmail");
+          const barberAddress = document.getElementById("barberAddress");
+          const barberPhone = document.getElementById("barberPhone");
+          const availableTimings = document.getElementById("availableTimings");
+          const serviceList = document.getElementById("serviceList");
+
+          if (selectedBarber && selectedBarber.name) {
+            barberNameElement.textContent = `BarberName: ${selectedBarber.name}`;
+            barberEmail.textContent = `BarberEmail: ${selectedBarber.email}`;
+            barberAddress.textContent = `BarberAddress: ${selectedBarber.address}`;
+            barberPhone.textContent = `BarberPhone: ${selectedBarber.phoneNumber}`;
+            const availableTimings =
+              document.getElementById("availableTimings");
+            availableTimings.innerHTML = `
+            <p style="font-size: 20px; color:black; text-align:center;">Baber Available Timings:</p>
+            <div class='main-column'>
+              <div class="column">
+              <p style="font-weight: bold;">Start Time</p>
+              ${
+                isOnHoliday(selectedBarber.holidays.Monday)
+                  ? "Closed"
+                  : selectedBarber.startTime.Monday
+              }
+              ${
+                isOnHoliday(selectedBarber.holidays.Tuesday)
+                  ? "Closed"
+                  : selectedBarber.startTime.Tuesday
+              }
+              ${
+                isOnHoliday(selectedBarber.holidays.Wednesday)
+                  ? "Closed"
+                  : selectedBarber.startTime.Wednesday
+              }
+              ${
+                isOnHoliday(selectedBarber.holidays.Thursday)
+                  ? "Closed"
+                  : selectedBarber.startTime.Thursday
+              }
+              ${
+                isOnHoliday(selectedBarber.holidays.Friday)
+                  ? "Closed"
+                  : selectedBarber.startTime.Friday
+              }
+              ${
+                isOnHoliday(selectedBarber.holidays.Saturday)
+                  ? "Closed"
+                  : selectedBarber.startTime.Saturday
+              }
+              ${
+                isOnHoliday(selectedBarber.holidays.Sunday)
+                  ? "Closed"
+                  : selectedBarber.startTime.Sunday
+              }
             </div>
 
-        </main>
+            <div class="column">
+                <p style="font-weight: bold;">End Time</p>
+                ${
+                  isOnHoliday(selectedBarber.holidays.Monday)
+                    ? "Closed"
+                    : selectedBarber.endTime.Monday
+                }
+                ${
+                  isOnHoliday(selectedBarber.holidays.Tuesday)
+                    ? "Closed"
+                    : selectedBarber.endTime.Tuesday
+                }
+                ${
+                  isOnHoliday(selectedBarber.holidays.Wednesday)
+                    ? "Closed"
+                    : selectedBarber.endTime.Wednesday
+                }
+                ${
+                  isOnHoliday(selectedBarber.holidays.Thursday)
+                    ? "Closed"
+                    : selectedBarber.endTime.Thursday
+                }
+                ${
+                  isOnHoliday(selectedBarber.holidays.Friday)
+                    ? "Closed"
+                    : selectedBarber.endTime.Friday
+                }
+                ${
+                  isOnHoliday(selectedBarber.holidays.Saturday)
+                    ? "Closed"
+                    : selectedBarber.endTime.Saturday
+                }
+                ${
+                  isOnHoliday(selectedBarber.holidays.Sunday)
+                    ? "Closed"
+                    : selectedBarber.endTime.Sunday
+                }
+            </div>
 
-    </section>
+            <div class="column">
+                <p style="font-weight: bold;">Working Days</p>
+                ${selectedBarber.workingDays
+                  .map((val) => {
+                    return val;
+                  })
+                  .join(", ")}<br>
+            </div>  
+            </div>
+          `;
 
-    <section class="footer-container">
+            // Display services
+            const serviceList = document.getElementById("serviceList");
+            serviceList.innerHTML = selectedBarber.services
+              .map((service) => `<li>${service}</li>`)
+              .join("");
+          } else {
+            // console.error("Selected barber details are incomplete.");
+          }
+        }
+      });
 
-        <footer class="footer-content">
+      function isOnHoliday(holiday) {
+        return holiday === true;
+      }
 
-            <p>&copy; 2023 BARBER HUNTER</p> 
+      // Function to format working hours
+      function getWorkingHours(time) {
+        return isOnHoliday(time) ? "00:00 AM" : time;
+      }
 
-        </footer>
+      // =================================   PART 3 OF JAVASCRIPT CODE    =========================================
+      document.addEventListener("DOMContentLoaded", () => {
+        const customerStartTimeSelect = document.getElementById(
+          "customerBookingTime"
+        );
+        const serviceCheckboxes = document.querySelectorAll(
+          ".checkbox input[type='checkbox']"
+        );
 
-    </section>
+        function generateHalfHourTimeSlots(selectElement) {
+          for (let hour = 0; hour < 24; hour++) {
+            for (let minute = 0; minute < 60; minute += 30) {
+              const amPm = hour >= 12 ? "PM" : "AM";
+              const hour12Format = hour % 12 || 12;
+              const formattedTime = `${hour12Format
+                .toString()
+                .padStart(2, "0")}:${minute
+                .toString()
+                .padStart(2, "0")} ${amPm}`;
 
-    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-analytics.js"></script>
-    
-    <script>
-      var firebaseConfig = {
-      apiKey: "AIzaSyARUxSIQr0l69z6Fshkn7UVBm9J_Zxj4nQ",
-      authDomain: "barber-hunter-623e9.firebaseapp.com",
-      databaseURL: "https://barber-hunter-623e9-default-rtdb.firebaseio.com",
-      projectId: "barber-hunter-623e9",
-      storageBucket: "barber-hunter-623e9.appspot.com",
-      messagingSenderId: "40429391612",
-      appId: "1:40429391612:web:efcfec9781ca068605d179",
-      measurementId: "G-VPRMN8CSPG"
-    };
-      // Initialize Firebases
-      firebase.initializeApp(firebaseConfig);
-      firebase.analytics();
-  </script>
-</body>
+              const option = document.createElement("option");
+              option.value = formattedTime;
+              option.textContent = formattedTime;
 
+              selectElement.appendChild(option);
+            }
+          }
+        }
+
+        generateHalfHourTimeSlots(customerStartTimeSelect);
+        const form = document.querySelector(".form");
+        const successModal = document.getElementById("successModal");
+        const submitBtn = document.getElementById("submitBtn");
+
+        form.addEventListener("submit", async (event) => {
+          event.preventDefault();
+
+          // Get the selected services
+          const selectedServices = [];
+          serviceCheckboxes.forEach((checkbox) => {
+            if (checkbox.checked) {
+              selectedServices.push(checkbox.value);
+            }
+          });
+
+          // Get the current date
+          const currentDate = new Date();
+
+          const selectedDate = date.value;
+          const selectedTime = customerStartTimeSelect.value;
+
+          if (!selectedDate || !selectedTime) {
+            alert("Please select both date and timing.");
+            return;
+          }
+
+          const selectedBarberJSON = localStorage.getItem("selectedBarber");
+          // if (!selectedBarberJSON) {
+          //   alert("Selected barber details not found.");
+          //   return;
+          // }
+          const selectedDateTime = new Date(`${selectedDate} ${selectedTime}`);
+          if (selectedDateTime <= currentDate) {
+            // Handle past appointments here (e.g., set status to "completed")
+          } else {
+            // Handle future appointments here
+            const selectedBarberJSON = localStorage.getItem("selectedBarber");
+            if (!selectedBarberJSON) {
+              alert("Selected barber details not found.");
+              return;
+            }
+          }
+
+          const selectedBarber = JSON.parse(selectedBarberJSON);
+
+          const selectedDay = new Date(selectedDate).toLocaleDateString(
+            "en-US",
+            {
+              weekday: "long",
+            }
+          );
+          if (isOnHoliday(selectedBarber.holidays[selectedDay])) {
+            alert(
+              `The barber is on holiday on ${selectedDay}. Please choose another day.`
+            );
+            return;
+          }
+
+          const emailDataToCustomer = {
+            to_email: "", // Set to the customer's email
+            from_name: "", // Set to the customer's name
+            barber_name: selectedBarber.name, // Add barber's name
+            barber_phoneNumber: selectedBarber.phoneNumber, // Add barber's phone number
+            barber_address: selectedBarber.address,
+            booking_date: selectedDate,
+            booking_time: selectedTime,
+            email_subject: `You've booked an appointment for ${selectedBarber.name}`,
+            email_body: `
+              You just booked an appointment for ${selectedBarber.name}
+              Please review the details below:
+              Barber name: ${selectedBarber.name}
+              Barber phone: ${selectedBarber.phoneNumber}
+              Barber location: ${selectedBarber.address}
+              Booking date: ${selectedDate}
+              Booking timing: ${selectedTime}
+            `,
+          };
+
+          const emailDataToBarber = {
+            to_email: selectedBarber.email,
+            from_name: "",
+            email_subject: `Great news: You've received an appointment from ${""}`,
+            customer_name: "", // Add barber's phone number
+            customer_phone: "",
+            customer_booking_date: selectedDate,
+            customer_booking_timing: selectedTime,
+            email_body: `
+                You just received an appointment from ${""}
+                Please review the requirements below:
+                Customer name: ${""}
+                Customer phone: ${""}
+                Customer booking date: ${selectedDate}
+                Customer booking timing: ${selectedTime}
+              `,
+          };
+
+          const user = customerAuth.currentUser;
+          if (user) {
+            const isAvailable = await isTimeSlotAvailable(
+              selectedBarber.uid,
+              selectedDate,
+              selectedTime
+            );
+
+            if (!isAvailable) {
+              alert(
+                "This time slot is already booked for this date. Kindly choose another slot."
+              );
+              return;
+            }
+            const customerDataRef = ref(db, `customers/${user.uid}`);
+            try {
+              const customerSnapshot = await get(customerDataRef);
+              const customerData = customerSnapshot.val();
+
+              if (!customerData) {
+                alert("Customer data not found.");
+                return;
+              }
+
+              // Customer
+              emailDataToCustomer.to_email = customerData.email;
+              emailDataToCustomer.from_name = customerData.name;
+              // Barber
+              emailDataToBarber.from_name = customerData.name;
+              emailDataToBarber.email_subject = customerData.name;
+              emailDataToBarber.customer_name = customerData.name;
+              emailDataToBarber.customer_phone = customerData.phone;
+
+              const barberBookingAppointmentsRef = ref(
+                db,
+                `barbers/${selectedBarber.uid}/appointments/${selectedDate}/${selectedTime}`
+              );
+              const appointmentData = {
+                uid: user.uid,
+                name: customerData.name,
+                email: customerData.email,
+                phone: customerData.phone,
+                customerSelectedServices: selectedServices,
+                status: "InProgress",
+              };
+
+              const customerAppointmentData = {
+                selectedDate: selectedDate,
+                selectedTime: selectedTime,
+                selectedServices: selectedServices,
+                barberName: selectedBarber.name,
+                barberEmail: selectedBarber.email,
+                barberAddress: selectedBarber.address,
+                barberPhone: selectedBarber.phoneNumber,
+                barberUID: selectedBarber.uid,
+              };
+
+              const appointmentBookingRef = ref(
+                db,
+                `customers/${user.uid}/appointmentBooking`
+              );
+
+              await update(barberBookingAppointmentsRef, appointmentData);
+              await update(appointmentBookingRef, customerAppointmentData);
+
+              $(successModal).modal("show");
+              // Clear the form fields
+              date.value = "";
+              customerStartTimeSelect.value = "";
+            } catch (error) {
+              // console.error("Error fetching customer data:", error);
+            }
+          } else {
+            alert("User not authenticated. Please log in.");
+          }
+          try {
+            // Send the email using the email template you created on Email.js
+            const responseCustomer = await emailjs.send(
+              // "service_xzj4ykp",
+              "service_9nf942i",
+              "template_guhz83p",
+              emailDataToCustomer
+            );
+            // console.log('emailDataToCustomer ', emailDataToCustomer )
+            // console.log("Email sent:", responseCustomer );
+
+            const responseBarber = await emailjs.send(
+              // "service_xzj4ykp", // Replace with your Email.js service ID
+              "service_9nf942i",
+              "template_xiv2buv", // Replace with your Email.js template ID
+              emailDataToBarber
+            );
+            // console.log("emailDataToBarber", emailDataToBarber);
+            // console.log("Email sent to barber:", responseBarber);
+          } catch (error) {
+            // console.error("Email error:", error);
+          }
+          // Clear the form fields
+          date.value = "";
+          customerStartTimeSelect.value = "";
+        });
+      });
+
+      // =================================   PART 4 OF JAVASCRIPT CODE    =========================================
+      // Define the isTimeSlotAvailable function
+      async function isTimeSlotAvailable(barberId, selectedDate, selectedTime) {
+        const barberBookingAppointmentsRef = ref(
+          db,
+          `barbers/${barberId}/appointments/${selectedDate}/${selectedTime}`
+        );
+
+        const snapshot = await get(barberBookingAppointmentsRef);
+        return !snapshot.exists(); // Return true if the time slot is available
+      }
+    </script>
+
+    <!-- EMail JS -->
+    <script type="text/javascript">
+      (function () {
+        emailjs.init("iFZ7jQYUT3LUpq7q3");
+      })();
+    </script>
+  </body>
 </html>

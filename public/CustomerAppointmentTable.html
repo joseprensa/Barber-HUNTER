@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Appointment</title>
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon" />
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS Libraries -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
+
+    <!-- Template Stylesheet -->
+    <link href="./css/responsive-table.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Top Bar Start -->
+    <div class="top-bar d-none d-md-block">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="top-bar-left">
+              <div class="text">
+                <h2>9:00AM - 5:00PM</h2>
+                <p>Opening Hour Mon - Fri</p>
+              </div>
+              <div class="text">
+                <h2>+123 456 7890</h2>
+                <p>Call Us For Appointment</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="top-bar-right">
+              <div class="social">
+              </div>
+              <div class="social">
+                <a href=""><i class="fab fa-facebook-f"></i></a>
+                <a href=""><i class="fab fa-whatsapp"></i></a>
+                <a href=""><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Top Bar End -->
+
+    <!-- Nav Bar Start -->
+    <div class="navbar navbar-expand-lg bg-dark navbar-dark">
+      <div class="container-fluid">
+        <a href="index.html" class="navbar-brand">
+          <img src="img/simbolo-blanco.png" alt="" />
+          <span class="brand-text">BARBER <span>HUNTER</span></span>
+        </a>
+
+        <button
+          type="button"
+          class="navbar-toggler"
+          data-toggle="collapse"
+          data-target="#navbarCollapse"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div
+          class="collapse navbar-collapse justify-content-between"
+          id="navbarCollapse"
+        >
+          <div class="navbar-nav ml-auto">
+            <a href="index.html" class="nav-item nav-link active">Home</a>
+            <a
+              href="./CustomerRegister.html"
+              id="signupLink"
+              class="nav-item nav-link"
+              >SignUp</a
+            >
+            <a
+              href="./CustomerLogin.html"
+              id="loginLink"
+              class="nav-item nav-link"
+              >Login</a
+            >
+            <div class="dropdown show">
+              <a
+                class="nav-item nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                id="userDropdown"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <i class="fas fa-user"></i>
+                <span id="userName"></span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="userDropdown">
+                <a href="./profile.html" class="dropdown-item" role="button"
+                  >Profile</a
+                >
+                <a href="#" class="dropdown-item" role="button">Appointment</a>
+                <a
+                  href="#"
+                  id="logoutButton"
+                  class="dropdown-item"
+                  role="button"
+                  >Logout</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Nav Bar End -->
+
+    <div class="main-appointment-table">
+      <h2>Appointment Table</h2>
+      <table class="appointment-table">
+        <thead>
+          <tr>
+            <th>Booking Date</th>
+            <th>Booking Timing</th>
+            <th>BarberName</th>
+            <th>Barber Email</th>
+            <th>Barber Phone</th>
+            <th>Barber Address</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="appointmentTableBody">
+          <!-- Add more rows with appointment booking data here if needed -->
+        </tbody>
+      </table>
+    </div>
+    <div
+      id="noAppointmentMessage"
+      class="main-appointment-table"
+      style="display: none; text-align: center"
+    >
+      <h2>No Appointment Please Book an Appointment</h2>
+    </div>
+
+    <!-- Footer Start -->
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="footer-contact">
+                  <h2>Barber Address</h2>
+                  <p>
+                    <i class="fa fa-map-marker-alt"></i>123 Street, New York,
+                    USA
+                  </p>
+                  <p><i class="fa fa-phone-alt"></i>+012 345 67890</p>
+                  <p><i class="fa fa-envelope"></i>barber@example.com</p>
+                  <div class="footer-social">
+                    <a href=""><i class="fab fa-facebook-f"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                    <a href=""><i class="fab fa-whatsapp"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="footer-link">
+                  <h2>Useful Links</h2>
+                  <p>Home</p>
+                  <p>About</p>
+                  <p>Service</p>
+                  <p>Gallery</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="footer-newsletter">
+              <h2>GET OFFERS</h2>
+              <div class="form">
+                <input class="form-control" placeholder="ENTER YOUR EMAIL" />
+              </div>
+              <button class="btn">SUBSCRIBE</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container copyright">
+        <div class="row">
+          <div class="col-md-6">
+            <p>
+              &copy;
+              <a href="#"
+                ><img src="img/simbolo-negro.png" alt="" width="60px" />Barber
+                Hunter</a
+              >, All Right Reserved.
+            </p>
+          </div>
+          <div class="col-md-6">
+            <p>
+              Designed By
+              <a href="#">
+                <img src="img/simbolo-negro.png" alt="" width="50px" /><span
+                  >Barber Hunter</span
+                >
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+      import {
+        getDatabase,
+        ref,
+        push,
+        set,
+        child,
+        remove,
+        get,
+        update,
+        orderByChild,
+      } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
+      import {
+        getAuth,
+        signOut,
+      } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyD0yIZdTSsU7gFDGnNCLTGv9DuLqbzsX_0",
+        authDomain: "barber-hunter-12291.firebaseapp.com",
+        databaseURL: "https://barber-hunter-12291-default-rtdb.firebaseio.com",
+        projectId: "barber-hunter-12291",
+        storageBucket: "barber-hunter-12291.appspot.com",
+        messagingSenderId: "454962485770",
+        appId: "1:454962485770:web:e3a919cb39cab044e81df3",
+        measurementId: "G-W027N9XFME",
+      };
+
+      const app = initializeApp(firebaseConfig);
+
+      // Reference to the Firebase Realtime Database
+      const db = getDatabase();
+      const customerAuth = getAuth();
+
+      customerAuth.onAuthStateChanged((user) => {
+        if (user) {
+          // User is signed in, fetch the customer data
+          const userId = user.uid;
+          const userRef = ref(db, "customers/" + userId);
+          get(userRef)
+            .then((snapshot) => {
+              if (snapshot.exists()) {
+                const userData = snapshot.val();
+                document.getElementById("userName").textContent =
+                  userData.name || "N/A";
+
+                // Fetch appointmentBooking data
+                const appointmentBookingRef = ref(
+                  db,
+                  "customers/" + userId + "/appointmentBooking"
+                );
+                get(appointmentBookingRef)
+                  .then((appointmentSnapshot) => {
+                    if (appointmentSnapshot.exists()) {
+                      const appointmentBooking = appointmentSnapshot.val();
+                      // Append the appointment data to the table
+                      appendAppointmentRow(appointmentBooking);
+                    } else {
+                      console.log("Appointment booking data not found");
+                      // Hide the appointment table if no appointment is booked
+                      hideAppointmentTable();
+                    }
+                  })
+                  .catch((error) => {
+                    console.error(
+                      "Error fetching appointment booking data:",
+                      error
+                    );
+                    // Hide the appointment table in case of an error
+                    hideAppointmentTable();
+                  });
+              } else {
+                console.log("User data not found");
+                // Hide the appointment table in case of an error
+                hideAppointmentTable();
+              }
+            })
+            .catch((error) => {
+              console.error("Error fetching user data:", error);
+              // Hide the appointment table in case of an error
+              hideAppointmentTable();
+            });
+
+          // Hide SignUp and Login links
+          document.getElementById("signupLink").style.display = "none";
+          document.getElementById("loginLink").style.display = "none";
+        } else {
+          // User is signed out, show SignUp and Login links
+          document.getElementById("signupLink").style.display = "block";
+          document.getElementById("loginLink").style.display = "block";
+          document.getElementById("userName").textContent = "";
+          // Hide the appointment table when the user is signed out
+          hideAppointmentTable();
+        }
+      });
+
+      function hideAppointmentTable() {
+        const appointmentTable = document.querySelector(
+          ".main-appointment-table"
+        );
+        appointmentTable.style.display = "none";
+
+        const noAppointmentMessage = document.getElementById(
+          "noAppointmentMessage"
+        );
+        noAppointmentMessage.style.display = "block";
+      }
+
+      function showAppointmentTable() {
+        const appointmentTable = document.querySelector(
+          ".main-appointment-table"
+        );
+        appointmentTable.style.display = "block";
+
+        const noAppointmentMessage = document.getElementById(
+          "noAppointmentMessage"
+        );
+        noAppointmentMessage.style.display = "block";
+      }
+
+      const logoutButton = document.getElementById("logoutButton");
+
+      // Add a click event listener to the "Logout" anchor tag
+      logoutButton.addEventListener("click", () => {
+        // Sign out the user using Firebase Auth
+        signOut(customerAuth)
+          .then(() => {
+            window.location.href = "index.html";
+          })
+          .catch((error) => {
+            console.error("Error signing out:", error);
+          });
+      });
+
+
+      // Function to create and append a new row to the appointment table
+      function appendAppointmentRow(appointmentData) {
+        const appointmentTableBody = document.getElementById(
+          "appointmentTableBody"
+        );
+
+        // Create a new <tr> element
+        const newRow = document.createElement("tr");
+
+        // Create <td> elements for date and time
+        const dateCell = document.createElement("td");
+        dateCell.textContent = appointmentData.selectedDate || "N/A";
+        dateCell.setAttribute("data-label", "Booking Date");
+
+        const timeCell = document.createElement("td");
+        timeCell.textContent = appointmentData.selectedTime || "N/A";
+        timeCell.setAttribute("data-label", "Booking Timing");
+
+        const barberName = document.createElement("td");
+        barberName.textContent = appointmentData.barberName || "N/A";
+        barberName.setAttribute("data-label", "BarberName");
+
+        const barberEmail = document.createElement("td");
+        barberEmail.textContent = appointmentData.barberEmail || "N/A";
+        barberEmail.setAttribute("data-label", "Barber Email");
+
+        const barberPhone = document.createElement("a"); // Create an anchor element
+        barberPhone.textContent = appointmentData.barberPhone || "N/A";
+        barberPhone.setAttribute("data-label", "Barber Phone");
+        barberPhone.setAttribute(
+          "href",
+          "tel:" + (appointmentData.barberPhone || "")
+        );
+        barberPhone.style.color = "blue";
+        barberPhone.addEventListener("click", function (event) {
+          event.preventDefault();
+
+          const phoneNumber = barberPhone.textContent;
+
+          if (phoneNumber !== "N/A") {
+            const confirmed = window.confirm(`Call ${phoneNumber}`);
+
+            if (confirmed) {
+              window.location.href = "tel:" + phoneNumber;
+            }
+          }
+        });
+
+        const tableCell = document.createElement("td");
+        tableCell.appendChild(barberPhone);
+
+        const barberAddress = document.createElement("td");
+        barberAddress.textContent = appointmentData.barberAddress || "N/A";
+        barberAddress.setAttribute("data-label", "Barber Address");
+
+        // Create <td> element for the Cancel button
+        const cancelCell = document.createElement("td");
+        const cancelButton = document.createElement("button");
+        cancelButton.className = "btn btn-danger";
+        cancelButton.textContent = "Cancel";
+        cancelCell.setAttribute("data-label", "Cancel");
+        cancelButton.addEventListener("click", cancelAppointment);
+
+        // Append date, time, and cancel button cells to the row
+        newRow.appendChild(dateCell);
+        newRow.appendChild(timeCell);
+        newRow.appendChild(barberName);
+        newRow.appendChild(barberAddress);
+        newRow.appendChild(tableCell);
+        newRow.appendChild(barberEmail);
+        cancelCell.appendChild(cancelButton);
+        newRow.appendChild(cancelCell);
+
+        // Append the new row to the appointment table
+        appointmentTableBody.appendChild(newRow);
+      }
+
+      // Function to cancel the appointment
+
+      function cancelAppointment() {
+        const userId = customerAuth.currentUser.uid; // Get the customer's UID
+        const customerAppointmentRef = ref(
+          db,
+          "customers/" + userId + "/appointmentBooking"
+        );
+
+        // Fetch the appointment data from the customer's node
+        get(customerAppointmentRef)
+          .then((customerAppointmentSnapshot) => {
+            if (customerAppointmentSnapshot.exists()) {
+              const customerAppointmentData = customerAppointmentSnapshot.val();
+              const barberUID = customerAppointmentData.barberUID;
+              const appointmentDate = customerAppointmentData.selectedDate;
+              const appointmentTime = customerAppointmentData.selectedTime;
+
+              // Construct the reference path for the barber's appointment
+              const barberAppointmentRef = ref(
+                db,
+                "barbers/" +
+                  barberUID +
+                  "/appointments/" +
+                  appointmentDate +
+                  "/" +
+                  appointmentTime
+              );
+
+              // Remove the appointment data from the customer's node
+              set(customerAppointmentRef, null)
+                .then(() => {
+                  console.log("Appointment data removed from customer");
+
+                  // Update the appointment data in the barber's node
+                  const barberStatusRef = ref(
+                    db,
+                    "barbers/" +
+                      barberUID +
+                      "/appointments/" +
+                      appointmentDate +
+                      "/" +
+                      appointmentTime +
+                      "/status"
+                  );
+
+                  // Set a status message indicating that the appointment was canceled by the customer
+                  set(barberStatusRef, "Canceled by Customer")
+                    .then(() => {
+                      console.log(
+                        "Status updated in the barber's appointment data"
+                      );
+
+                      // Reload the page
+                      window.location.reload();
+                    })
+                    .catch((error) => {
+                      console.error(
+                        "Error updating status in the barber's appointment data:",
+                        error
+                      );
+                    });
+                })
+                .catch((error) => {
+                  console.error(
+                    "Error removing appointment data from customer:",
+                    error
+                  );
+                });
+            } else {
+              console.log("Appointment data not found");
+            }
+          })
+          .catch((error) => {
+            console.error(
+              "Error fetching appointment data from customer:",
+              error
+            );
+          });
+      }
+    </script>
+  </body>
+</html>

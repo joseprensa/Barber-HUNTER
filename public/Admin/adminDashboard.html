@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/adminStyle.css" />
+    <title>Admin Dashboard</title>
+    <style>
+      .outer-wrapper {
+        margin-top: 40px;
+        margin-left: 20px;
+        margin-right: 20px;
+        border: 1px solid black;
+        border-radius: 4px;
+        box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.9);
+        width: 100%;
+        height: 100%;
+        max-width: fit-content;
+        max-height: fit-content;
+      }
+
+      /* Set the table wrapper to take up 100% width and a maximum height of 66.4vh */
+      .table-wrapper {
+        overflow-y: scroll;
+        overflow-x: scroll;
+        /* width: 100%;  */
+        height: 100vh;
+        margin-top: 22px;
+        margin: 15px;
+        padding-bottom: 20px;
+      }
+
+      /* Set the table to take up 100% width */
+      table {
+        width: 100%;
+        min-width: max-content;
+        border-collapse: separate;
+        border-spacing: 0px;
+      }
+
+      .table-filter {
+        border-radius: 5px;
+      }
+
+      .heading {
+        display: flex;
+        color: #10121b;
+        box-shadow: 0px 1px 2px #10121b;
+      }
+
+      table th {
+        position: sticky;
+        top: 0px;
+        background-color: #10121b;
+        color: #fff;
+
+        text-align: center;
+        font-weight: normal;
+        font-size: 18px;
+        outline: 0.7px solid black;
+        border: 1.5px solid black;
+      }
+
+      table th,
+      table td {
+        padding: 15px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+
+      table td {
+        text-align: left;
+
+        font-size: 15px;
+        border: 1px solid rgb(177, 177, 177);
+        padding-left: 20px;
+      }
+
+      /* Responsive adjustments */
+      @media screen and (max-width: 768px) {
+        .outer-wrapper {
+          margin: 10px;
+        }
+
+        .table-wrapper {
+          margin-top: 10px;
+        }
+
+        table th,
+        table td {
+          padding: 10px;
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="d-flex" id="wrapper">
+      <!-- Sidebar -->
+      <div class="bg-white" id="sidebar-wrapper">
+        <div
+          class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"
+          style="margin-right: 30px"
+        >
+          <div class="d-flex align-items-center">
+            <img
+              src="../img/simbolo-negro.png"
+              alt=""
+              width="70px"
+              class="me-2"
+            />
+            <span>BARBER HUNTER</span>
+          </div>
+        </div>
+        <div class="list-group list-group-flush my-3">
+          <a
+            href="adminDashboard.html"
+            class="list-group-item list-group-item-action bg-transparent second-text active"
+            ><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a
+          >
+          <a
+            href="./AllCustomersFetch.html"
+            id="usersLink"
+            class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+          >
+            <i class="fas fa-project-diagram me-2"></i>Customers
+          </a>
+          <a
+            href="./AllBarberFetch.html"
+            class="list-group-item list-group-item-action bg-transparent second-text fw-bold barbers"
+          >
+            <i class="fas fa-project-diagram me-2"></i>Barbers
+          </a>
+          <a
+            href="./admin.html"
+            id="logoutSidebar"
+            class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"
+            ><i class="fas fa-power-off me-2"></i>Logout</a
+          >
+        </div>
+      </div>
+      <!-- /#sidebar-wrapper -->
+
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+        <nav class="navbar navbar-expand-lg navbar-dark py-4 px-4">
+          <div class="d-flex align-items-center">
+            <i
+              class="fas fa-align-left primary-text fs-4 me-3"
+              id="menu-toggle"
+            ></i>
+            <h2 class="fs-2 m-0">Admin Dashboard</h2>
+          </div>
+
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle fw-bold"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  style="color: #fff"
+                >
+                  <i class="fas fa-user me-2"></i
+                  ><span id="adminNamePlaceholder">Loading...</span>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li>
+                    <a
+                      id="logoutDropdown"
+                      class="dropdown-item"
+                      href="./admin.html"
+                      >Logout</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <div class="container-fluid px-4">
+          <div class="row my-5">
+            <div class="col">
+              <div class="outer-wrapper">
+                <h1 class="heading">Reservation Details</h1>
+                <div class="table-wrapper">
+                  <table
+                    class="table bg-white rounded shadow-sm table-hover"
+                    id="reservationData"
+                  >
+                    <thead>
+                      <tr>
+                        <th col-index="1">Barber Name</th>
+                        <th col-index="2">Barber Email</th>
+                        <th col-index="3">Barber Phone</th>
+                        <th col-index="4">
+                          Status
+                          <select id="statusFilter" class="table-filter">
+                            <option value="all">All</option>
+                            <option value="InProgress">InProgress</option>
+                            <option value="Canceled by Customer">
+                              Canceled by Customer
+                            </option>
+                          </select>
+                        </th>
+                        <th col-index="5">Customer Name</th>
+                        <th col-index="6">Customer Email</th>
+                        <th col-index="7">Customer Phone</th>
+                        <th col-index="8">
+                          Customer BookingDate
+                          <select id="dateFilter" class="table-filter">
+                            <option value="all">All</option>
+                          </select>
+                        </th>
+                        <th col-index="9">
+                          Customer Booking Timing
+                          <select id="timeFilter" class="table-filter">
+                            <option value="all">All</option>
+                          </select>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody id="admin-table-body">
+                      <!-- Data will be dynamically populated here using JavaScript -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+    <!-- </div> -->
+
+    <!--   ==========================      JAVASCRIPT CODE IN SCRIPT TAG      ==========================    -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+      import {
+        getDatabase,
+        ref,
+        push,
+        set,
+        child,
+        get,
+        update,
+      } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
+      import { getAuth } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyD0yIZdTSsU7gFDGnNCLTGv9DuLqbzsX_0",
+        authDomain: "barber-hunter-12291.firebaseapp.com",
+        databaseURL: "https://barber-hunter-12291-default-rtdb.firebaseio.com",
+        projectId: "barber-hunter-12291",
+        storageBucket: "barber-hunter-12291.appspot.com",
+        messagingSenderId: "454962485770",
+        appId: "1:454962485770:web:e3a919cb39cab044e81df3",
+        measurementId: "G-W027N9XFME",
+      };
+
+      const app = initializeApp(firebaseConfig);
+
+      const db = getDatabase();
+      const auth = getAuth();
+
+      // Function to populate the table with barber data and appointments
+      function populateTable(barbersData) {
+        const table = document.getElementById("reservationData");
+        const tbody = table.querySelector("tbody");
+        for (const barberId in barbersData) {
+          if (barbersData.hasOwnProperty(barberId)) {
+            const barberData = barbersData[barberId];
+            const barberName = barberData.name;
+            const barberEmail = barberData.email;
+            const barberPhone = barberData.phoneNumber;
+            const appointments = barberData.appointments || {};
+
+            // Check if there are no appointments for this barber
+            if (Object.keys(appointments).length === 0) {
+              const row = tbody.insertRow();
+              const barberNameCell = row.insertCell(0);
+              const barberEmailCell = row.insertCell(1);
+              const barberPhoneCell = row.insertCell(2);
+
+              // Set barber name, email, and phone here
+              barberNameCell.textContent = barberName;
+              barberEmailCell.textContent = barberEmail;
+              barberPhoneCell.textContent = barberPhone;
+
+              // Set "-" for the rest of the cells
+              for (let i = 3; i < 8; i++) {
+                const cell = row.insertCell(i);
+                cell.textContent = "-";
+              }
+
+              // Style the cells as needed
+              barberNameCell.style.textDecoration = "underline";
+            } else {
+              for (const appointmentTime in appointments) {
+                if (appointments.hasOwnProperty(appointmentTime)) {
+                  const appointmentDetails = appointments[appointmentTime];
+                  const dateFilter = document.getElementById("dateFilter");
+                  const timeFilter = document.getElementById("timeFilter");
+
+                  const dateOption = document.createElement("option");
+                  dateOption.value = appointmentTime;
+                  dateOption.textContent = appointmentTime;
+                  dateFilter.appendChild(dateOption);
+                  const uniqueTimes = new Set();
+                  for (const customerId in appointmentDetails) {
+                    if (appointmentDetails.hasOwnProperty(customerId)) {
+                      const row = tbody.insertRow();
+                      const barberNameCell = row.insertCell(0);
+                      const barberEmailCell = row.insertCell(1);
+                      const barberPhoneCell = row.insertCell(2);
+                      const timeValue = customerId; // Assuming customerId represents the time
+                      uniqueTimes.add(timeValue);
+
+                      // Set barber name, email, and phone here
+                      barberNameCell.textContent = barberName;
+                      barberEmailCell.textContent = barberEmail;
+                      const phoneNumberAnchor = document.createElement("a");
+                      const phoneNumber = barberPhone || "";
+                      phoneNumberAnchor.textContent = phoneNumber;
+                      phoneNumberAnchor.href = `tel:${phoneNumber}`;
+                      phoneNumberAnchor.classList.add("phone-link"); // Add the phone-link class
+
+                      // Add a click event listener to the phone number anchor
+                      phoneNumberAnchor.addEventListener(
+                        "click",
+                        function (event) {
+                          event.preventDefault();
+
+                          // Show a confirmation dialog with an option to call
+                          const confirmCall = confirm(`Call ${phoneNumber}?`);
+
+                          // If the user confirms, initiate the call
+                          if (confirmCall) {
+                            window.location.href =
+                              phoneNumberAnchor.getAttribute("href");
+                          }
+                        }
+                      );
+
+                      // Append the anchor element to the phoneCell
+                      barberPhoneCell.appendChild(phoneNumberAnchor);
+
+                      const customerDetails = appointmentDetails[customerId];
+
+                      const statusCell = row.insertCell(3);
+                      statusCell.textContent = customerDetails.status;
+                      statusCell.className = "status-cell";
+                      if (customerDetails.status === "InProgress") {
+                        statusCell.classList.add("in-progress");
+                      } else if (
+                        customerDetails.status === "Canceled by Customer"
+                      ) {
+                        statusCell.classList.add("canceled");
+                      }
+
+                      const nameCell = row.insertCell(4);
+                      nameCell.textContent = customerDetails.name || "-";
+
+                      const emailCell = row.insertCell(5);
+                      emailCell.textContent = customerDetails.email || "-";
+
+                      const phoneCell = row.insertCell(6);
+                      const phoneNumberAnchor2 = document.createElement("a");
+                      const phoneNumber2 = customerDetails.phone || "-";
+                      phoneNumberAnchor2.textContent = phoneNumber2;
+                      phoneNumberAnchor2.href = `tel:${phoneNumber2}`;
+                      phoneNumberAnchor2.classList.add("phone-link"); // Add the phone-link class
+
+                      // Add a click event listener to the phone number anchor
+                      phoneNumberAnchor2.addEventListener(
+                        "click",
+                        function (event) {
+                          event.preventDefault();
+
+                          // Show a confirmation dialog with an option to call
+                          const confirmCall = confirm(`Call ${phoneNumber2}?`);
+
+                          // If the user confirms, initiate the call
+                          if (confirmCall) {
+                            window.location.href =
+                              phoneNumberAnchor2.getAttribute("href");
+                          }
+                        }
+                      );
+
+                      // Append the anchor element to the phoneCell
+                      phoneCell.appendChild(phoneNumberAnchor2);
+
+                      const bookingDateCell = row.insertCell(7);
+                      bookingDateCell.textContent = appointmentTime;
+
+                      const bookingTimingCell = row.insertCell(8);
+                      bookingTimingCell.textContent = customerId;
+
+                      barberNameCell.style.textDecoration = "underline";
+                    }
+                  }
+                  uniqueTimes.forEach((timeValue) => {
+                    const timeOption = document.createElement("option");
+                    timeOption.value = timeValue;
+                    timeOption.textContent = timeValue;
+                    timeFilter.appendChild(timeOption);
+                  });
+                }
+              }
+            }
+          }
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        document
+          .getElementById("statusFilter")
+          .addEventListener("change", filter_rows);
+
+        document
+          .getElementById("dateFilter")
+          .addEventListener("change", filter_rows);
+
+        document
+          .getElementById("timeFilter")
+          .addEventListener("change", filter_rows);
+      });
+
+      function filter_rows() {
+        const statusFilter = document.getElementById("statusFilter").value;
+        const dateFilter = document.getElementById("dateFilter").value;
+        const timeFilter = document.getElementById("timeFilter").value;
+
+        const rows = document.querySelectorAll("#admin-table-body tr");
+
+        rows.forEach((row) => {
+          const statusCell = row.querySelector("td:nth-child(4)").textContent;
+          const dateCell = row.querySelector("td:nth-child(8)").textContent;
+          const timeCell = row.querySelector("td:nth-child(9)").textContent;
+
+          const dateMatch = dateFilter === "all" || dateCell === dateFilter;
+          const timeMatch = timeFilter === "all" || timeCell === timeFilter;
+          const statusMatch =
+            statusFilter === "all" || statusCell === statusFilter;
+
+          if (dateMatch && timeMatch && statusMatch) {
+            row.style.display = "";
+          } else {
+            row.style.display = "none";
+          }
+        });
+      }
+
+      // Retrieve all barber data from Firebase
+      const barbersRef = ref(db, "barbers");
+      get(barbersRef)
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            const barbersData = snapshot.val();
+            populateTable(barbersData);
+          } else {
+            // Handle the case when there are no barbers
+            const tbody = document.querySelector("#reservationData tbody");
+            tbody.innerHTML = "";
+            const noBarbersContainer =
+              document.getElementById("noBarbersContainer");
+            const noBarbersHeading = document.createElement("h3");
+            noBarbersHeading.textContent = "No Barbers Found";
+            noBarbersContainer.appendChild(noBarbersHeading);
+          }
+        })
+        .catch((error) => {});
+
+      // Function to get the admin name from localStorage
+      function adminNameGet() {
+        const adminNamePlaceholder = document.getElementById(
+          "adminNamePlaceholder"
+        );
+        const adminName = localStorage.getItem("admindb");
+        if (adminName) {
+          adminNamePlaceholder.textContent = adminName;
+        } else {
+          adminNamePlaceholder.textContent = "Admin";
+        }
+      }
+
+      // Call the function to update the admin name on page load
+      adminNameGet();
+
+      // Function to remove admin name from localStorage
+      function removeAdminNameFromLocalStorage() {
+        localStorage.removeItem("admindb");
+      }
+
+      // Event listener for the Logout link in the dropdown menu
+      const logoutDropdownLink = document.getElementById("logoutDropdown");
+      logoutDropdownLink.addEventListener(
+        "click",
+        removeAdminNameFromLocalStorage
+      );
+
+      // Event listener for the Logout link in the sidebar
+      const logoutSidebarLink = document.getElementById("logoutSidebar");
+      logoutSidebarLink.addEventListener(
+        "click",
+        removeAdminNameFromLocalStorage
+      );
+
+      var el = document.getElementById("wrapper");
+      var toggleButton = document.getElementById("menu-toggle");
+      toggleButton.onclick = function () {
+        el.classList.toggle("toggled");
+      };
+    </script>
+  </body>
+</html>

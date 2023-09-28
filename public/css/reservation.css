@@ -1,0 +1,323 @@
+:root {
+  --main-bg-color: #1d2434;
+  --main-text-color: #1d2434;
+  --second-text-color: #000000;
+  --second-bg-color: #1d2434;
+}
+
+body {
+  background-color: #ffffff;
+}
+
+.primary-text {
+  color: var(--main-text-color);
+}
+
+.second-text {
+  color: var(--second-text-color);
+}
+
+.primary-bg {
+  background-color: var(--main-bg-color);
+}
+
+.secondary-bg {
+  background-color: var(--second-bg-color);
+}
+
+.rounded-full {
+  border-radius: 100%;
+}
+
+.navbar {
+  background-color: #1d2434;
+  color: #fff;
+}
+
+.navbar i {
+  color: #fff;
+}
+
+#page-content-wrapper {
+  background: #f2edf3;
+}
+
+#wrapper {
+  overflow-x: hidden;
+  background-image: linear-gradient(
+    to right,
+    #baf3d7,
+    #c2f5de,
+    #cbf7e4,
+    #d4f8ea,
+    #ddfaef
+  );
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin 0.25s ease-out;
+  -moz-transition: margin 0.25s ease-out;
+  -o-transition: margin 0.25s ease-out;
+  transition: margin 0.25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+#menu-toggle {
+  cursor: pointer;
+}
+
+.list-group-item {
+  border: none;
+  padding: 20px 30px;
+}
+
+.list-group-item.active {
+  background-color: transparent;
+  color: var(--main-text-color);
+  font-weight: bold;
+  border: none;
+}
+
+.form .input-box {
+  width: 100%;
+  /* margin-top: 5px; */
+}
+.input-box label {
+  color: #333;
+}
+.form :where(.input-box input, .select-box) {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: #707070;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0 15px;
+}
+.input-box input:focus {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+.form .column {
+  display: flex;
+  column-gap: 15px;
+}
+.form .service-box {
+  margin-top: 20px;
+}
+.service-box h3 {
+  color: #333;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.form :where(.service-option, .checkbox) {
+  display: flex;
+  align-items: center;
+  column-gap: 50px;
+  flex-wrap: wrap;
+}
+.form .checkbox {
+  column-gap: 5px;
+}
+.checkbox input {
+  accent-color: rgb(130, 106, 251);
+}
+.form :where(.checkbox input, .checkbox label) {
+  cursor: pointer;
+}
+.checkbox label {
+  color: #707070;
+}
+.address :where(input, .select-box) {
+  margin-top: 15px;
+}
+.select-box select {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  color: #707070;
+  font-size: 1rem;
+}
+.form button {
+  height: 55px;
+  width: 100%;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 30px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #1d2434;
+}
+.form button:hover {
+  background: #10121b;
+}
+
+.checkbox input {
+  /* Remove accent-color property */
+  /* accent-color: rgb(130, 106, 251); */
+  /* Adjust the styles for the checkboxes */
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  padding: 0;
+  appearance: none;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  background-color: white;
+}
+
+/* Add custom styling for the checked state */
+.checkbox input:checked {
+  background-color: #1d2434;
+}
+
+/* Add custom styling for the checkbox label */
+.checkbox label {
+  color: #707070;
+  font-size: 1rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  column-gap: 5px;
+}
+
+/* Profile Card Container */
+.outer-wrapper {
+  margin-top: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border: 1px solid black;
+  border-radius: 4px;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.9);
+  /* width: 100%;  */
+  /* height: 100%;  */
+  max-width: fit-content;
+  max-height: fit-content;
+}
+
+/* Set the table wrapper to take up 100% width and a maximum height of 66.4vh */
+.table-wrapper {
+  overflow-y: scroll;
+  overflow-x: scroll;
+  /* width: 100%;  */
+  height: 66.4vh; /* Set a maximum height */
+  margin-top: 22px;
+  margin: 15px;
+  padding-bottom: 20px;
+}
+
+/* Set the table to take up 100% width */
+table {
+  /* width: 100%;  */
+  min-width: max-content;
+  border-collapse: separate;
+  border-spacing: 0px;
+}
+
+.table-filter {
+  border-radius: 5px;
+}
+
+.heading {
+  display: flex;
+  color: #10121b;
+  box-shadow: 0px 1px 2px #10121b;
+}
+
+table th {
+  position: sticky;
+  top: 0px;
+  background-color: #10121b;
+  color: #fff;
+
+  text-align: center;
+  font-weight: normal;
+  font-size: 18px;
+  outline: 0.7px solid black;
+  border: 1.5px solid black;
+}
+
+table th,
+table td {
+  padding: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+table td {
+  text-align: left;
+
+  font-size: 15px;
+  border: 1px solid rgb(177, 177, 177);
+  padding-left: 20px;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .outer-wrapper {
+    margin: 10px;
+  }
+
+  .table-wrapper {
+    margin-top: 10px;
+  }
+
+  table th,
+  table td {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+/*Responsive*/
+@media screen and (max-width: 500px) {
+  .form .column {
+    flex-wrap: wrap;
+  }
+  .form :where(.service-option, .checkbox) {
+    row-gap: 15px;
+  }
+  table th,
+  table td {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
