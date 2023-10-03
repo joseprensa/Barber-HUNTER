@@ -20,8 +20,6 @@
     <div class="d-flex" id="wrapper">
       <!-- Sidebar -->
       <div class="bg-white" id="sidebar-wrapper">
-        <!-- <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">
-                <img src="img/simbolo-negro.png" alt="" width="50px"><span>BARBER HUNTER</span></div> -->
         <div
           class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"
           style="margin-right: 30px"
@@ -146,6 +144,10 @@
                       <!-- Table rows will be dynamically populated here -->
                     </tbody>
                   </table>
+                  <!-- No Appointment Found Message -->
+                  <div id="noAppointmentMessage" class="text-center mt-4">
+                    <h1>No Appointments Found</h1>
+                  </div>
                 </div>
               </div>
             </div>
@@ -192,22 +194,25 @@
       const barberAuth = getAuth();
 
       barberAuth.onAuthStateChanged((user) => {
+        let hasAppointments = false;
         if (user) {
           // User is authenticated, fetch and populate the data
           const barberDataRef = ref(db, `barbers/${user.uid}`);
           get(barberDataRef).then((snapshot) => {
             const barberData = snapshot.val();
-            const barberNamePlaceholder = document.getElementById(
-              "barberNamePlaceholder"
-            );
+            if (barberData && barberData.name) {
+              barberNamePlaceholder.textContent = barberData.name;
+            } else {
+              barberNamePlaceholder.textContent = "N/A";
+            }
             const tableBody = document.getElementById("barber-table-body");
-
+            const noAppointmentMessage = document.getElementById(
+              "noAppointmentMessage"
+            );
             if (barberData && barberData.appointments) {
               barberNamePlaceholder.textContent = barberData.name;
-
               // Clear the table body
               tableBody.innerHTML = "";
-
               for (const appointmentTime in barberData.appointments) {
                 if (barberData.appointments.hasOwnProperty(appointmentTime)) {
                   const appointmentDetails =
@@ -232,7 +237,7 @@
                       const serviceCell = document.createElement("td");
 
                       const customerDetails = appointmentDetails[customerId];
-                      const timeValue = customerId; 
+                      const timeValue = customerId;
                       uniqueTimes.add(timeValue);
 
                       dateCell.textContent = appointmentTime;
@@ -284,8 +289,15 @@
                     timeOption.textContent = timeValue;
                     timeFilter.appendChild(timeOption);
                   });
+                  hasAppointments = true;
                 }
               }
+            }
+            if (!hasAppointments) {
+              // If no appointments found, display the message
+              noAppointmentMessage.style.display = "block";
+            } else {
+              noAppointmentMessage.style.display = "none";
             }
           });
         } else {

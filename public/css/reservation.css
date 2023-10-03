@@ -205,6 +205,14 @@ body {
   column-gap: 5px;
 }
 
+.status-in-progress {
+  color: blue;
+}
+
+.status-canceled {
+  color: red; 
+}
+
 /* Profile Card Container */
 .outer-wrapper {
   margin-top: 40px;

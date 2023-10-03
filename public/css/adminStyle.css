@@ -124,7 +124,7 @@ body {
   display: flex;
   column-gap: 15px;
 }
-.form .service-box {
+/* .form .service-box {
   margin-top: 20px;
 }
 .service-box h3 {
@@ -150,7 +150,80 @@ body {
 }
 .checkbox label {
   color: #707070;
+} */
+.form .service-box {
+  margin: 20px;
 }
+.service-box h3 {
+  color: #333;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+/* Table styling */
+.service-box table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Header row styling */
+.service-box table thead th {
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Service rows styling */
+.service-box table tbody tr {
+  border: 1px solid #ccc;
+}
+
+/* Service name column styling */
+.service-box table td:first-child {
+  padding: 10px;
+  text-align: left;
+}
+
+/* Checkbox styling */
+.form .checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox label {
+  margin-left: 5px;
+  color: #707070;
+}
+
+/* Price and AdjustTime column styling */
+.service-box table td:nth-child(2),
+td:nth-child(3) {
+  text-align: center;
+}
+
+/* Select box styling */
+.select-option select {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 14px;
+}
+/* Media query for small devices */
+@media only screen and (max-width: 500px) {
+  .form .service-box {
+    /* margin: -10px;  */
+  }
+
+  .service-box h3 {
+    font-size: 1rem; 
+  }
+}
+
+
 .address :where(input, .select-box) {
   margin-top: 15px;
 }

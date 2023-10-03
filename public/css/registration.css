@@ -10,7 +10,7 @@ body {
   min-height: 100vh;
   color: #797979;
   background: #ffffff;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   /* padding: 20px; */
 }
 
@@ -94,35 +94,35 @@ body {
 
 @media (min-width: 992px) {
   .navbar {
-      width: 100%;
-      padding: 20px 60px;
-      background-color: #1d2434;
+    width: 100%;
+    padding: 20px 60px;
+    background-color: #1d2434;
   }
-  
+
   .navbar.nav-sticky {
-      padding: 5px;
+    padding: 5px;
   }
-  
+
   .navbar a.nav-link {
-      padding: 8px 15px;
-      font-size: 14px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
+    padding: 8px 15px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
   }
 }
 
-@media (max-width: 991.98px) {   
+@media (max-width: 991.98px) {
   .navbar {
-      padding: 15px;
-      background: #1d2434 !important;
+    padding: 15px;
+    background: #1d2434 !important;
   }
-  
+
   .navbar a.nav-link {
-      padding: 5px;
+    padding: 5px;
   }
-  
+
   .navbar .dropdown-menu {
-      box-shadow: none;
+    box-shadow: none;
   }
 }
 
@@ -147,7 +147,6 @@ body {
     text-transform: uppercase;
   }
 }
-
 
 .form-container {
   position: relative;
@@ -175,6 +174,26 @@ body {
 .input-box label {
   color: #333;
 }
+
+.form .textarea-box {
+  margin-bottom: 20px;
+}
+
+.textarea-box label {
+  display: block;
+  font-weight: bold;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical; 
+  font-size: 14px;
+  line-height: 1.5;
+}
+
 .form :where(.input-box input, .select-box) {
   position: relative;
   height: 50px;
@@ -194,7 +213,7 @@ body {
   display: flex;
   column-gap: 15px;
 }
-.form .service-box {
+/* .form .service-box {
   margin-top: 20px;
 }
 .service-box h3 {
@@ -217,10 +236,75 @@ body {
 }
 .form :where(.checkbox input, .checkbox label) {
   cursor: pointer;
+} */
+/* Overall container styling */
+.form .service-box {
+  margin: 20px;
 }
+.service-box h3 {
+  color: #333;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+/* Table styling */
+.service-box table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Header row styling */
+.service-box table thead th {
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Service rows styling */
+.service-box table tbody tr {
+  border: 1px solid #ccc;
+}
+
+/* Service name column styling */
+.service-box table td:first-child {
+  padding: 10px;
+  text-align: left;
+}
+
+/* Checkbox styling */
+.form .checkbox {
+  display: flex;
+  align-items: center;
+}
+
 .checkbox label {
+  margin-left: 5px;
   color: #707070;
 }
+
+/* Price and AdjustTime column styling */
+.service-box table td:nth-child(2),
+td:nth-child(3) {
+  text-align: center;
+}
+
+/* Select box styling */
+.select-option select {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 14px;
+}
+
+/* Add more specific styling as needed */
+
+/* .checkbox label {
+  color: #707070;
+} */
 .address :where(input, .select-box) {
   margin-top: 15px;
 }
@@ -247,7 +331,6 @@ body {
 .form button:hover {
   background: #10121b;
 }
-
 
 .checkbox input {
   width: 18px;
@@ -324,7 +407,6 @@ body {
   border-radius: 3px;
 }
 
-
 /* Styling for the "Days" and "To" headings */
 .availability .column h2 {
   font-size: 16px;
@@ -343,7 +425,6 @@ body {
 .holiday-checkbox {
   margin-right: 40px;
 }
-
 
 /*******************************/
 /********* Footer CSS **********/
@@ -365,7 +446,7 @@ body {
 
 .footer .footer-contact h2,
 .footer .footer-link h2,
-.footer .footer-newsletter h2{
+.footer .footer-newsletter h2 {
   position: relative;
   margin-bottom: 30px;
   font-size: 22px;
@@ -377,7 +458,7 @@ body {
   display: block;
   margin-bottom: 10px;
   color: #999999;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .footer .footer-link a::before {
@@ -445,7 +526,7 @@ body {
   border-radius: 0;
   border: 2px solid #fff;
   margin-top: 10px;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .footer .footer-newsletter .btn:hover {
@@ -518,7 +599,6 @@ body {
   .availability .column {
     width: 100%; /* Full width for mobile devices */
   }
-  
 }
 
 /* Media query for screens between 768px and 992px (e.g., tablets) */
@@ -542,7 +622,6 @@ body {
   }
 }
 
-
 /* Additional responsive adjustments can be added as needed */
 
 /* Example: Adjust padding and font size for smaller screens */
@@ -559,31 +638,30 @@ body {
 @media (max-width: 767.98px) {
   .footer .copyright p,
   .footer .copyright .col-md-6:last-child p {
-      margin: 5px 0;
-      text-align: center;
+    margin: 5px 0;
+    text-align: center;
   }
 }
-
 
 /* Media Query for 640x1136 pixels (Portrait) */
 @media (max-width: 640px) and (max-height: 1136px) {
   /* Add your styles for this resolution here */
   /* Example: */
   body {
-      font-size: 14px;
+    font-size: 14px;
   }
   /* Adjust the styles for the navbar */
   .navbar {
-      padding: 10px;
-      background-color: #1d2434 !important;
+    padding: 10px;
+    background-color: #1d2434 !important;
   }
 
   .navbar .navbar-brand {
-      font-size: 28px;
+    font-size: 28px;
   }
 
   .navbar a.nav-link {
-      padding: 10px;
+    padding: 10px;
   }
   /* Add more styles as needed */
 }

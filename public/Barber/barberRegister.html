@@ -39,7 +39,7 @@
     <div class="navbar navbar-expand-lg bg-dark navbar-dark">
       <div class="container-fluid">
         <a href="#" class="navbar-brand">
-          <img src="img/simbolo-blanco.png" alt="" />
+          <img src="../img/simbolo-blanco.png" alt="" />
           <span class="brand-text">BARBER <span>HUNTER</span></span>
         </a>
 
@@ -147,6 +147,92 @@
           <span class="error" id="addressError"></span>
         </div>
         <div class="service-box">
+          <h3>Select Details</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Services</th>
+                <th>Price</th>
+                <th>RequiredTime</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="checkbox">
+                    <input
+                      type="checkbox"
+                      id="style1"
+                      value="Cut & Style"
+                      checked
+                    />
+                    <label for="style1">Cut & Style</label>
+                  </div>
+                </td>
+                <td>
+                  <div class="select-option">
+                    <select id="price1">
+                      <!-- Add more price options as needed -->
+                    </select>
+                  </div>
+                </td>
+                <td>
+                  <div class="select-option">
+                    <select id="adjustTime1">
+                      <!-- Add more time options as needed -->
+                    </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="checkbox">
+                    <input type="checkbox" id="style2" value="Washing" />
+                    <label for="style2">Washing</label>
+                  </div>
+                </td>
+                <td>
+                  <div class="select-option">
+                    <select id="price2">
+                      <!-- Add more price options as needed -->
+                    </select>
+                  </div>
+                </td>
+                <td>
+                  <div class="select-option">
+                    <select id="adjustTime2">
+                      <!-- Add more time options as needed -->
+                    </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="checkbox">
+                    <input type="checkbox" id="style3" value="Beard Shave" />
+                    <label for="style3">Beard Shave</label>
+                  </div>
+                </td>
+                <td>
+                  <div class="select-option">
+                    <select id="price3">
+                      <!-- Add more price options as needed -->
+                    </select>
+                  </div>
+                </td>
+                <td>
+                  <div class="select-option">
+                    <select id="adjustTime3">
+                      <!-- Add more time options as needed -->
+                    </select>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- <div class="service-box">
           <h3>Select Service</h3>
           <div class="select-option">
             <div class="checkbox">
@@ -162,8 +248,18 @@
               <label for="style3">Beard Shave</label>
             </div>
           </div>
+          
+        </div> -->
+        <div class="textarea-box description">
+          <label for="description">Description</label>
+          <textarea
+            id="description"
+            name="description"
+            rows="4"
+            placeholder="Describe your services ..."
+          ></textarea>
         </div>
-        <br />
+        <!-- <br /> -->
         <div class="availability">
           <h3>Set Working Days and Hours</h3>
           <div class="row">
@@ -309,7 +405,7 @@
             <p>
               &copy;
               <a href="#"
-                ><img src="img/simbolo-negro.png" alt="" width="60px" />Barber
+                ><img src="../img/simbolo-negro.png" alt="" width="60px" />Barber
                 Hunter</a
               >, All Right Reserved.
             </p>
@@ -318,7 +414,7 @@
             <p>
               Designed By
               <a href="#">
-                <img src="img/simbolo-negro.png" alt="" width="50px" /><span
+                <img src="../img/simbolo-negro.png" alt="" width="50px" /><span
                   >Barber Hunter</span
                 >
               </a>
@@ -395,7 +491,30 @@
       const fridayToTime = document.getElementById("fridayToTime");
       const saturdayToTime = document.getElementById("saturdayToTime");
       const sundayToTime = document.getElementById("sundayToTime");
+      function toggleSelectBoxes(
+        serviceCheckbox,
+        priceSelect,
+        adjustTimeSelect
+      ) {
+        if (serviceCheckbox.checked) {
+          priceSelect.disabled = false;
+          adjustTimeSelect.disabled = false;
+        } else {
+          priceSelect.disabled = true;
+          adjustTimeSelect.disabled = true;
+        }
+      }
 
+      // Attach event listeners to service checkboxes
+      for (let i = 1; i <= 3; i++) {
+        const serviceCheckbox = document.getElementById(`style${i}`);
+        const priceSelect = document.getElementById(`price${i}`);
+        const adjustTimeSelect = document.getElementById(`adjustTime${i}`);
+
+        serviceCheckbox.addEventListener("change", function () {
+          toggleSelectBoxes(serviceCheckbox, priceSelect, adjustTimeSelect);
+        });
+      }
       const submitBtn = document.getElementById("submitBtn");
       submitBtn.addEventListener("click", async (e) => {
         e.preventDefault();
@@ -418,6 +537,25 @@
         const services = Array.from(
           form.querySelectorAll(".checkbox input:checked")
         ).map((input) => input.value);
+
+        const selectedServiceData = {};
+
+        // Iterate through services and populate the selectedServiceData object
+        for (let i = 1; i <= 3; i++) {
+          const serviceCheckbox = document.getElementById(`style${i}`);
+          const priceSelect = document.getElementById(`price${i}`);
+          const adjustTimeSelect = document.getElementById(`adjustTime${i}`);
+
+          if (serviceCheckbox.checked) {
+            const serviceName = serviceCheckbox.value;
+            const price = parseInt(priceSelect.value);
+            const adjustTime = parseInt(adjustTimeSelect.value);
+
+            selectedServiceData[serviceName] = { price, adjustTime };
+          }
+        }
+
+        const description = document.getElementById("description").value;
 
         // Gather working days and hours
         const workingDays = Array.from(days.children).map(
@@ -473,6 +611,29 @@
           isValid = false;
         }
 
+        // const selectedServices = [];
+        // for (let i = 1; i <= 3; i++) {
+        //   const serviceCheckbox = document.getElementById(`style${i}`);
+        //   const priceSelect = document.getElementById(`price${i}`);
+        //   const adjustTimeSelect = document.getElementById(`adjustTime${i}`);
+
+        //   if (serviceCheckbox.checked) {
+        //     selectedServices.push(serviceCheckbox.value);
+        //   }
+        // }
+
+        // if (document.getElementById("style1").checked) {
+        //   selectedServices.push("Cut & Style");
+        // }
+
+        // if (document.getElementById("style2").checked) {
+        //   selectedServices.push("Washing");
+        // }
+
+        // if (document.getElementById("style3").checked) {
+        //   selectedServices.push("Beard Shave");
+        // }
+
         try {
           // Create user account in Firebase Authentication
           const userCredential = await createUserWithEmailAndPassword(
@@ -489,7 +650,8 @@
             phoneNumber,
             countryCode,
             address,
-            services,
+            services: selectedServiceData,
+            description,
             workingDays,
             startTime,
             endTime,
@@ -510,27 +672,48 @@
           }
         }
       });
+      function generatePriceOptions(selectElement) {
+        for (let price = 30; price <= 200; price += 10) {
+          const option = document.createElement("option");
+          option.value = price;
+          option.textContent = `$${price}`;
+          selectElement.appendChild(option);
+        }
+      }
+
+      function generateAdjustTimeOptions(selectElement) {
+        for (let minutes = 30; minutes <= 300; minutes += 30) {
+          const option = document.createElement("option");
+          option.value = minutes;
+          option.textContent = `${minutes} minutes`;
+          selectElement.appendChild(option);
+        }
+      }
+
+      // Call the functions to populate the select boxes for each service
+      for (let i = 1; i <= 3; i++) {
+        generatePriceOptions(document.getElementById(`price${i}`));
+        generateAdjustTimeOptions(document.getElementById(`adjustTime${i}`));
+      }
 
       // Function to populate select box options
       function generateTimeOptions(selectElement) {
-          for (let hour = 0; hour < 24; hour++) {
-            for (let minute = 0; minute < 60; minute += 30) {
-              const amPm = hour >= 12 ? "PM" : "AM";
-              const hour12Format = hour % 12 || 12;
-              const formattedTime = `${hour12Format
-                .toString()
-                .padStart(2, "0")}:${minute
-                .toString()
-                .padStart(2, "0")} ${amPm}`;
+        for (let hour = 0; hour < 24; hour++) {
+          for (let minute = 0; minute < 60; minute += 30) {
+            const amPm = hour >= 12 ? "PM" : "AM";
+            const hour12Format = hour % 12 || 12;
+            const formattedTime = `${hour12Format
+              .toString()
+              .padStart(2, "0")}:${minute.toString().padStart(2, "0")} ${amPm}`;
 
-              const option = document.createElement("option");
-              option.value = formattedTime;
-              option.textContent = formattedTime;
+            const option = document.createElement("option");
+            option.value = formattedTime;
+            option.textContent = formattedTime;
 
-              selectElement.appendChild(option);
-            }
+            selectElement.appendChild(option);
           }
         }
+      }
 
       generateTimeOptions(mondayStartTime);
       generateTimeOptions(tuesdayStartTime);

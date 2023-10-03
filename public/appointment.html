@@ -32,7 +32,7 @@
   </head>
   <style>
     body {
-      background-image: url("/img/shop3.jpg");
+      background-image: url("img/shop3.jpg");
       background-repeat: no-repeat;
       background-size: cover;
     }
@@ -76,8 +76,23 @@
     }
 
     #serviceList {
-      list-style: disc;
-      margin-left: 20px;
+      list-style: none;
+      padding: 0;
+    }
+
+    #serviceList li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    #serviceList li span {
+      flex: 1;
+    }
+
+    #serviceList .heading {
+      font-weight: bold;
     }
 
     #timingSelect {
@@ -227,7 +242,12 @@
       </div>
       <div id="services">
         <h2>Services:</h2>
-        <ul id="serviceList"></ul>
+        <ul id="serviceList">
+          <!-- <li class="heading"></li> -->
+          <li id="service-1"></li>
+          <li id="service-2"></li>
+          <li id="service-3"></li>
+        </ul>
       </div>
 
       <div id="availableTimings">
@@ -239,15 +259,30 @@
           <h3>Select Service</h3>
           <div class="select-option">
             <div class="checkbox">
-              <input type="checkbox" id="style1" value="Cut & Style" checked />
+              <input
+                type="checkbox"
+                id="style1"
+                class="checkbox-group"
+                value="Cut & Style"
+              />
               <label for="style1">Cut & Style</label>
             </div>
             <div class="checkbox">
-              <input type="checkbox" id="style2" value="Washing" />
+              <input
+                type="checkbox"
+                id="style2"
+                class="checkbox-group"
+                value="Washing"
+              />
               <label for="style2">Washing</label>
             </div>
             <div class="checkbox">
-              <input type="checkbox" id="style3" value="Beard Shave" />
+              <input
+                type="checkbox"
+                id="style3"
+                class="checkbox-group"
+                value="Beard Shave"
+              />
               <label for="style3">Beard Shave</label>
             </div>
           </div>
@@ -258,14 +293,18 @@
             type="date"
             id="date"
             name="date"
-            placeholder="Enter birth date"
+            placeholder="Enter booking date"
           />
         </div>
         <div class="input-box address">
           <label for="customerBookingTime">Timing</label>
           <div class="column">
             <div class="select-box">
-              <select id="customerBookingTime" name="customerBookingTime">
+              <select
+                id="customerBookingTime"
+                name="customerBookingTime"
+                required
+              >
                 <!-- Options for available time slots will be added here -->
               </select>
             </div>
@@ -489,13 +528,13 @@
           try {
             await signOut(customerAuth); // Logout the customer
             // Redirect to the Barber Login page
-            window.location.href = "Barber/barberLogin.html";
+            window.location.href = "../Barber/barberLogin.html";
           } catch (error) {
             // console.error("Logout failed: " + error.message);
           }
         } else {
           // If the customer is not authenticated, simply navigate to the Barber Login page
-          window.location.href = "Barber/barberLogin.html";
+          window.location.href = "../Barber/barberLogin.html";
         }
       });
 
@@ -612,13 +651,33 @@
             </div>
           `;
 
-            // Display services
-            const serviceList = document.getElementById("serviceList");
-            serviceList.innerHTML = selectedBarber.services
-              .map((service) => `<li>${service}</li>`)
-              .join("");
+            const servicesArray = Object.keys(selectedBarber.services).map(
+              (key) => ({
+                name: key,
+                ...selectedBarber.services[key],
+              })
+            );
+
+            // Update the serviceList
+            serviceList.innerHTML = `
+        <li class="heading">
+          <span>Service</span>
+          <span style="margin-left:10px">Price</span>
+          <span style="margin-left:20px">RequiredTime</span>
+        </li>
+        ${servicesArray
+          .map(
+            (service, index) => `<li id="service-${index + 1}">
+            <span>${service.name}</span>
+            <span>${service.price}$</span>
+            <span>${service.adjustTime} minutes</span>
+          </li>`
+          )
+          .join("")}
+      `;
           } else {
-            // console.error("Selected barber details are incomplete.");
+            // Handle the case when selected barber details are incomplete
+            alert("Selected barber details are incomplete.");
           }
         }
       });
@@ -640,10 +699,60 @@
         const serviceCheckboxes = document.querySelectorAll(
           ".checkbox input[type='checkbox']"
         );
+        const checkboxes = document.querySelectorAll(".checkbox-group");
 
-        function generateHalfHourTimeSlots(selectElement) {
-          for (let hour = 0; hour < 24; hour++) {
-            for (let minute = 0; minute < 60; minute += 30) {
+        function generateAvailableTimeSlots(
+          selectElement,
+          selectedBarber,
+          selectedDate
+        ) {
+          // Get the day of the week for the selected date (e.g., "Monday")
+          const selectedDay = new Date(selectedDate).toLocaleDateString(
+            "en-US",
+            {
+              weekday: "long",
+            }
+          );
+
+          // Check if the barber is on holiday for the selected day
+          if (selectedBarber.holidays[selectedDay]) {
+            // Barber is on holiday, so display "Closed"
+            const option = document.createElement("option");
+            option.value = "Closed";
+            option.textContent = "Closed";
+            selectElement.innerHTML = "";
+            selectElement.appendChild(option);
+          } else {
+            // Barber is available, generate time slots based on their schedule for the selected day
+            const startTime = selectedBarber.startTime[selectedDay];
+            const endTime = selectedBarber.endTime[selectedDay];
+
+            // Convert start and end times to minutes for easier calculation
+            const [startHour, startMinute] = startTime.split(":").map(Number);
+            const [endHour, endMinute] = endTime.split(":").map(Number);
+            const startMinutes = startHour * 60 + startMinute;
+            const endMinutes = endHour * 60 + endMinute;
+
+            // Clear any existing options
+            selectElement.innerHTML = "";
+
+            const timeSlots = [];
+
+            // Add the special text option before 12:00 AM
+            const specialText = `Barber is available from ${startTime} to ${endTime}`;
+            const specialOption = document.createElement("option");
+            specialOption.value = "SpecialText";
+            specialOption.textContent = specialText;
+            selectElement.appendChild(specialOption);
+
+            // Generate time slots at 30-minute intervals within the barber's schedule
+            for (
+              let minutes = startMinutes;
+              minutes <= endMinutes;
+              minutes += 30
+            ) {
+              const hour = Math.floor(minutes / 60);
+              const minute = minutes % 60;
               const amPm = hour >= 12 ? "PM" : "AM";
               const hour12Format = hour % 12 || 12;
               const formattedTime = `${hour12Format
@@ -652,16 +761,61 @@
                 .toString()
                 .padStart(2, "0")} ${amPm}`;
 
-              const option = document.createElement("option");
-              option.value = formattedTime;
-              option.textContent = formattedTime;
-
-              selectElement.appendChild(option);
+              timeSlots.push(formattedTime);
             }
+
+            // Add both start time and end time to the time slots array
+            timeSlots.unshift(startTime);
+            timeSlots.push(endTime);
+
+            // Generate additional time slots for every hour and every 30 minutes throughout the day
+            for (let hour = 0; hour < 24; hour++) {
+              for (let minute = 0; minute < 60; minute += 30) {
+                const amPm = hour >= 12 ? "PM" : "AM";
+                const hour12Format = hour % 12 || 12;
+                const formattedTime = `${hour12Format
+                  .toString()
+                  .padStart(2, "0")}:${minute
+                  .toString()
+                  .padStart(2, "0")} ${amPm}`;
+
+                timeSlots.push(formattedTime);
+              }
+            }
+
+            // Create and append options for each time slot
+            timeSlots.forEach((timeSlot) => {
+              const option = document.createElement("option");
+              option.value = timeSlot;
+              option.textContent = timeSlot;
+              selectElement.appendChild(option);
+            });
           }
         }
 
-        generateHalfHourTimeSlots(customerStartTimeSelect);
+        // Event listener for date input changes
+        const dateInput = document.getElementById("date");
+        dateInput.addEventListener("input", () => {
+          // Get the selected barber details from localStorage
+          const selectedBarberJSON = localStorage.getItem("selectedBarber");
+          if (selectedBarberJSON) {
+            const selectedBarber = JSON.parse(selectedBarberJSON);
+            const customerStartTimeSelect = document.getElementById(
+              "customerBookingTime"
+            );
+
+            // Get the selected date from the date input field
+            const selectedDate = dateInput.value;
+
+            // Call the updated function to generate available timings HTML
+            generateAvailableTimeSlots(
+              customerStartTimeSelect,
+              selectedBarber,
+              selectedDate
+            );
+          }
+        });
+
         const form = document.querySelector(".form");
         const successModal = document.getElementById("successModal");
         const submitBtn = document.getElementById("submitBtn");
@@ -676,6 +830,18 @@
               selectedServices.push(checkbox.value);
             }
           });
+          let atLeastOneChecked = false;
+          for (const checkbox of serviceCheckboxes) {
+            if (checkbox.checked) {
+              atLeastOneChecked = true;
+              break;
+            }
+          }
+
+          if (!atLeastOneChecked) {
+            alert("Please select at least one service.");
+            return;
+          }
 
           // Get the current date
           const currentDate = new Date();
@@ -772,6 +938,31 @@
               );
               return;
             }
+            const selectedStartTime = selectedBarber.startTime[selectedDay];
+
+            const selectedEndTime = selectedBarber.endTime[selectedDay];
+            // Compare the selected time with the end time
+            if (selectedDateTime > new Date(`${selectedDate} ${selectedEndTime}`)
+              || selectedDateTime < new Date(`${selectedDate} ${selectedStartTime}` )) {
+                alert("This Time Baber is not available. Please choose a later time.");
+                return;
+              }
+
+            // Check if the customer already has an appointment
+            const user = customerAuth.currentUser;
+            if (user) {
+              const hasExistingAppointment = await hasAppointment(user.uid);
+              if (hasExistingAppointment) {
+                alert(
+                  "You have already booked one barber appointment. Please cancel the first appointment before booking a new one."
+                );
+                return;
+              }
+            } else {
+              alert("User not authenticated. Please log in.");
+              return;
+            }
+
             const customerDataRef = ref(db, `customers/${user.uid}`);
             try {
               const customerSnapshot = await get(customerDataRef);
@@ -860,6 +1051,16 @@
           customerStartTimeSelect.value = "";
         });
       });
+
+      // Function to check if the customer already has an appointment
+      async function hasAppointment(customerUid) {
+        const customerAppointmentRef = ref(
+          db,
+          `customers/${customerUid}/appointmentBooking`
+        );
+        const snapshot = await get(customerAppointmentRef);
+        return snapshot.exists();
+      }
 
       // =================================   PART 4 OF JAVASCRIPT CODE    =========================================
       // Define the isTimeSlotAvailable function

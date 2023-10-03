@@ -125,6 +125,8 @@
                       <th>Phone Number</th>
                       <th>Address</th>
                       <th>Services</th>
+                      <th>Price</th>
+                      <th>RequiredTime</th>
                       <th>Day</th>
                       <th>Start Time</th>
                       <th>End Time</th>
@@ -174,44 +176,101 @@
                 <label for="editEmail">Email Address</label>
                 <input type="email" id="editEmail" name="editEmail" />
               </div>
-
-              <div class="column">
-                <!-- <div class="input-box">
-                            <label for="editTel">Phone Number</label>
-                            <input
-                              type="number"
-                              id="editTel"
-                              name="editTel"
-                            />
-                            <input type="hidden" name="countryCode" id="countryCode" />
-                          </div> -->
-              </div>
               <div class="input-box address">
                 <label for="editAddress">Address</label>
                 <input type="text" name="editAddress" id="editAddress" />
               </div>
+
               <div class="service-box">
-                <h3>Select Service</h3>
-                <div class="select-option">
-                  <div class="checkbox">
-                    <input
-                      type="checkbox"
-                      id="style1"
-                      value="Cut & Style"
-                      checked
-                    />
-                    <label for="style1">Cut & Style</label>
-                  </div>
-                  <div class="checkbox">
-                    <input type="checkbox" id="style2" value="Washing" />
-                    <label for="style2">Washing</label>
-                  </div>
-                  <div class="checkbox">
-                    <input type="checkbox" id="style3" value="Beard Shave" />
-                    <label for="style3">Beard Shave</label>
-                  </div>
-                </div>
+                <h3>Select Details</h3>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Services</th>
+                      <th>Prices</th>
+                      <th>Required Time</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="checkbox">
+                          <input
+                            type="checkbox"
+                            id="style1"
+                            value="Cut & Style"
+                            checked
+                          />
+                          <label for="style1">Cut & Style</label>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="select-option">
+                          <select id="price1">
+                            <!-- Price options will be added here dynamically -->
+                          </select>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="select-option">
+                          <select id="requiredTime1">
+                            <!-- Required Time options will be added here dynamically -->
+                          </select>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="checkbox">
+                          <input type="checkbox" id="style2" value="Washing" />
+                          <label for="style2">Washing</label>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="select-option">
+                          <select id="price2">
+                            <!-- Price options will be added here dynamically -->
+                          </select>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="select-option">
+                          <select id="requiredTime2">
+                            <!-- Required Time options will be added here dynamically -->
+                          </select>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="checkbox">
+                          <input
+                            type="checkbox"
+                            id="style3"
+                            value="Beard Shave"
+                          />
+                          <label for="style3">Beard Shave</label>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="select-option">
+                          <select id="price3">
+                            <!-- Price options will be added here dynamically -->
+                          </select>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="select-option">
+                          <select id="requiredTime3">
+                            <!-- Required Time options will be added here dynamically -->
+                          </select>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+
               <div class="availability">
                 <h3>Set Working Days and Hours</h3>
                 <div class="row">
@@ -229,27 +288,34 @@
                   </div>
                   <div class="column">
                     <h2>From</h2>
-                    <select name="mondayStartTime" id="mondayStartTime">
-                      <!-- Options  -->
-                    </select>
-                    <select name="tuesdayStartTime" id="tuesdayStartTime">
-                      <!-- Options  -->
-                    </select>
-                    <select name="wednesdayStartTime" id="wednesdayStartTime">
-                      <!-- Options  -->
-                    </select>
-                    <select name="thursdayStartTime" id="thursdayStartTime">
-                      <!-- Options  -->
-                    </select>
-                    <select name="fridayStartTime" id="fridayStartTime">
-                      <!-- Options  -->
-                    </select>
-                    <select name="saturdayStartTime" id="saturdayStartTime">
-                      <!-- Options  -->
-                    </select>
-                    <select name="sundayStartTime" id="sundayStartTime">
-                      <!-- Options  -->
-                    </select>
+                    <select
+                      name="mondayStartTime"
+                      id="mondayStartTime"
+                    ></select>
+                    <select
+                      name="tuesdayStartTime"
+                      id="tuesdayStartTime"
+                    ></select>
+                    <select
+                      name="wednesdayStartTime"
+                      id="wednesdayStartTime"
+                    ></select>
+                    <select
+                      name="thursdayStartTime"
+                      id="thursdayStartTime"
+                    ></select>
+                    <select
+                      name="fridayStartTime"
+                      id="fridayStartTime"
+                    ></select>
+                    <select
+                      name="saturdayStartTime"
+                      id="saturdayStartTime"
+                    ></select>
+                    <select
+                      name="sundayStartTime"
+                      id="sundayStartTime"
+                    ></select>
                   </div>
                   <div class="column">
                     <h2>To</h2>
@@ -355,13 +421,32 @@
               barberNamePlaceholder.textContent = barberData.name;
               const table = document.getElementById("barberData");
               const newRow = table.insertRow();
+              const services = Object.keys(barberData.services).map((key) => ({
+                name: key,
+                adjustTime: barberData.services[key].adjustTime,
+                price: barberData.services[key].price,
+              }));
+
+              // Populate the 'Services', 'Price', and 'Adjust Time' columns
+              const servicesCell = newRow.insertCell();
+              const priceCell = newRow.insertCell();
+              const adjustTimeCell = newRow.insertCell();
+
               newRow.innerHTML = `
                     <tr style="text-align: center;">
                       <td>${barberData.name}</td>
                       <td>${barberData.email}</td>
                       <td>${barberData.phoneNumber}</td>
                       <td>${barberData.address}</td>
-                      <td>${barberData.services.join(", ")}</td>
+                      <td style="line-height: 2">${(servicesCell.textContent = services
+                        .map((service) => service.name)
+                        .join(", "))}</td>
+                      <td style="line-height: 4">${(priceCell.textContent = services
+                        .map((service) => `$${service.price}`)
+                        .join("\n"))}</td>
+                      <td style="line-height: 4">${(adjustTimeCell.textContent = services
+                        .map((service) => `${service.adjustTime} min`)
+                        .join("\n"))}</td>
                       <td >${barberData.workingDays
                         .map((val) => {
                           return val + ",<br>";
@@ -459,6 +544,7 @@
         return isOnHoliday(time) ? "00:00 AM" : time;
       }
 
+      // Edit Functionality Start
       const editNameField = document.getElementById("editName");
       const editEmailField = document.getElementById("editEmail");
       // const editTelField = document.getElementById("editTel");
@@ -518,25 +604,77 @@
           get(barberRef)
             .then((snapshot) => {
               const barberData = snapshot.val();
-              // console.log('barberData', barberData)
-              if (
-                barberData &&
-                barberData.services &&
-                Array.isArray(barberData.services)
-              ) {
-                // Populate form fields with retrieved data
+              if (barberData && barberData.services) {
                 editNameField.value = barberData.name;
                 editEmailField.value = barberData.email;
-                // editTelField.value = barberData.phoneNumber;
                 editAddressField.value = barberData.address;
 
-                // Populate services checkboxes
-                const serviceCheckboxes = document.querySelectorAll(
-                  ".checkbox input[type='checkbox']"
-                );
-                serviceCheckboxes.forEach((checkbox) => {
-                  if (barberData.services.includes(checkbox.value)) {
-                    checkbox.checked = true;
+                // Populate services fields
+                const priceSelects = [];
+                const timeSelects = [];
+
+                for (let i = 1; i <= 3; i++) {
+                  const serviceName = document.getElementById(`style${i}`);
+                  const servicePriceSelect = document.getElementById(
+                    `price${i}`
+                  );
+                  const serviceTimeSelect = document.getElementById(
+                    `requiredTime${i}`
+                  );
+
+                  if (serviceName && servicePriceSelect && serviceTimeSelect) {
+                    priceSelects.push(servicePriceSelect);
+                    timeSelects.push(serviceTimeSelect);
+
+                    const serviceKey = serviceName.value;
+                    if (
+                      barberData.services &&
+                      barberData.services[serviceKey]
+                    ) {
+                      serviceName.checked = true;
+                      const servicePrice =
+                        barberData.services[serviceKey].price;
+                      const serviceTime =
+                        barberData.services[serviceKey].adjustTime;
+
+                      // Clear existing options
+                      servicePriceSelect.innerHTML = "";
+                      serviceTimeSelect.innerHTML = "";
+
+                      // Create and append Price options
+                      const priceOptionFetched =
+                        document.createElement("option");
+                      priceOptionFetched.value = servicePrice;
+                      priceOptionFetched.text = `${servicePrice} $`;
+                      servicePriceSelect.appendChild(priceOptionFetched);
+
+                      // Create and append Time options
+                      const timeOptionFetched =
+                        document.createElement("option");
+                      timeOptionFetched.value = serviceTime;
+                      timeOptionFetched.text = `${serviceTime} minutes`;
+                      serviceTimeSelect.appendChild(timeOptionFetched);
+                    }
+                  }
+                }
+
+                // Generate and append Price options from 30$ to 200$ for all selects
+                priceSelects.forEach((servicePriceSelect) => {
+                  for (let price = 30; price <= 200; price += 10) {
+                    const priceOption = document.createElement("option");
+                    priceOption.value = price;
+                    priceOption.text = `${price} $`;
+                    servicePriceSelect.appendChild(priceOption);
+                  }
+                });
+
+                // Generate and append Time options from 30 minutes to 300 minutes (5 hours) for all selects
+                timeSelects.forEach((serviceTimeSelect) => {
+                  for (let time = 30; time <= 300; time += 30) {
+                    const timeOption = document.createElement("option");
+                    timeOption.value = time;
+                    timeOption.text = `${time} minutes`;
+                    serviceTimeSelect.appendChild(timeOption);
                   }
                 });
 
@@ -672,7 +810,7 @@
               email: editEmailField.value,
               // phoneNumber: editTelField.value,
               address: editAddressField.value,
-              services: [], // Initialize an empty array to hold services
+              services: {}, // Initialize an empty array to hold services
               startTime: {
                 // Add start times for each day
                 Monday: document.getElementById("mondayStartTime").value,
@@ -706,15 +844,27 @@
               },
             };
 
-            // Loop through the checkboxes and add checked services to the array
-            const serviceCheckboxes = document.querySelectorAll(
-              ".checkbox input[type='checkbox']"
-            );
-            serviceCheckboxes.forEach((checkbox) => {
-              if (checkbox.checked) {
-                updatedData.services.push(checkbox.value);
+            // Loop through the services select elements and add their data to updatedData
+            for (let i = 1; i <= 3; i++) {
+              const serviceName = document.getElementById(`style${i}`);
+              const servicePriceSelect = document.getElementById(`price${i}`);
+              const serviceTimeSelect = document.getElementById(
+                `requiredTime${i}`
+              );
+
+              if (serviceName && servicePriceSelect && serviceTimeSelect) {
+                const serviceKey = serviceName.value;
+                const isChecked = serviceName.checked;
+                const servicePrice = servicePriceSelect.value;
+                const serviceTime = serviceTimeSelect.value;
+
+                updatedData.services[serviceKey] = {
+                  checked: isChecked,
+                  price: servicePrice,
+                  adjustTime: serviceTime,
+                };
               }
-            });
+            }
             // Update the data in Firebase
             update(barberRef, {
               ...updatedData,
